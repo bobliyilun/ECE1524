@@ -80,7 +80,7 @@ header ARP_h {
 // Digest header
 header digest_header_h {
     bit<16>   src_port;
-    bit<8>   digest_code;
+    digCode_t   digest_code;
 }
 
 // List of all recognized headers
@@ -260,12 +260,16 @@ control MyIngress(inout Parsed_packet p,
                 // ARP_table.apply();
             }
         }
+        else {
+            drop();
+        }  
         if ((standard_metadata.egress_spec != CPU_PORT) && (next_hop_ipv4 != 0)) {
             if (arp_cache_table.apply().hit && p.ip.isValid()) {
                 p.ethernet.srcAddr = p.ethernet.dstAddr;
                 p.ethernet.dstAddr = next_hop_mac;
             }
-        }                   
+        }
+                         
     }
 }
 
