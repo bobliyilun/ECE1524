@@ -170,9 +170,9 @@ control MyIngress(inout Parsed_packet p,
         p.digest.setValid();
     }
 
-    action ipv4_forward(port_t port, IPv4Addr_t next_hop) {
+    action ipv4_forward(port_t port, IPv4Addr_t next) {
         standard_metadata.egress_spec = port;
-        next_hop_ipv4 = next_hop;
+        next_hop_ipv4 = next;
     }
 
     action arp_respond(EthAddr_t result) {
@@ -204,7 +204,7 @@ control MyIngress(inout Parsed_packet p,
     // TODO: Is this what the routing table is supposed to look like?
     table routing_table {
         key = {
-            p.ip.dstAddr: lpm;
+            p.ip.dstAddr: ternary;
         }
         actions = {
             ipv4_forward;
