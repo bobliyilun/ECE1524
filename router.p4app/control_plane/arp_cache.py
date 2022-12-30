@@ -36,8 +36,8 @@ class ARP_cache():
         self.ifaces = config.ifaces
         self.sendp = config.sendp
         self.rtable = config.rtable
-        self.ifaces = config.ifaces
-        self.arp_list = []
+        self.arp_pending_reply = {}
+        self.seen_arp_request = []
         # TODO: initialize ARP handling thread(s)?
         # TODO: define additional helper methods
         # One possible approach for handling the ARP cache is to define two
@@ -48,30 +48,37 @@ class ARP_cache():
         # 2. To remove stale cache entries
 
     def handle_arp_miss(self, pkt):
+        self.arp_pending_reply[pkt] = 0
+        if pkt in self.seen_arp_request:
+            return
+        self.seen_arp_request.append(pkt)
+        t = Ether()/ARP()
+        if IP in pkt:
+            t[Ether].dst = ETH_BROADCAST
+            t[Ether].src = pkt[Ether].src
 
-        sendp(pkt, iface=self.dma_iface, verbose=False)
+            t[ARP].hwdst = ETH_BROADCAST
+            t[ARP].pdst = pkt[IP].dst
 
-    # def handleArpReply(self, pkt):
-    #     # add replies from hosts to cache
-    #     self.addMacAddr(pkt[ARP].hwsrc, pkt[CPUMetadata].srcPort)
-    #     self.addIPAddr(pkt[ARP].psrc, pkt[ARP].hwsrc)
-    #     self.send(pkt)
+            t[ARP].hwsrc = pkt[Ether].src
+            t[ARP].psrc = pkt[IP].src
+            
+        else if ARP in pkt:
+            t[Ether].dst = ETH_BROADCAST
+            t[Ether].src = pkt[Ether].src
 
-    # def handleArpRequest(self, pkt):
-    #     # add requests from hosts to cache
-    #     self.addMacAddr(pkt[ARP].hwsrc, pkt[CPUMetadata].srcPort)
-    #     self.addIPAddr(pkt[ARP].psrc, pkt[ARP].hwsrc)
+            t[ARP].hwdst = ETH_BROADCAST
+            t[ARP].pdst = pkt[ARP].pdst
 
-    #     # respond to requests addressed to any router interface
-    #     if pkt[ARP].pdst in self.intf_ips:
-    #         dstIP = pkt[ARP].pdst
-    #         pkt[Ether].dst = pkt[Ether].src
-    #         pkt[Ether].src = self.MAC
-    #         pkt[ARP].op = 2 # reply
-    #         pkt[ARP].hwdst = pkt[ARP].hwsrc
-    #         pkt[ARP].pdst = pkt[ARP].psrc
-    #         pkt[ARP].hwsrc = self.MAC
-    #         pkt[ARP].psrc = dstIP
+            t[ARP].hwsrc = pkt[Ether].src
+            t[ARP].psrc = pkt[IP].src
+            
 
-    #     self.send(pkt)
+        for i in self.ifaces:
+            if IP in pkt:
+                if i.ip != pkt[IP].dst:
+                    sendp(t, iface=i, verbose=False)
+            else if ARP in pkt:
+                sendp(t, iface=i, verbose=False)
+
 
