@@ -1,0 +1,9 @@
+{
+    "program": "simple_router.p4",
+    "language": "p4-16",
+    "targets": {
+      "custom": {
+         "program": "main.py"
+      }
+    }
+}
