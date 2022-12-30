@@ -167,15 +167,17 @@ control MyIngress(inout Parsed_packet p,
         standard_metadata.egress_spec = CPU_PORT;
         p.digest.src_port = (bit<16>)standard_metadata.ingress_port; 
         p.digest.digest_code = dig_code;
-        // p.digest.setValid();
+        p.digest.setValid();
     }
 
     action ipv4_forward(port_t port, IPv4Addr_t next) {
+        p.digest.setInvalid();
         standard_metadata.egress_spec = port;
         next_hop_ipv4 = next;
     }
 
     action arp_respond(EthAddr_t result) {
+        p.digest.setInvalid();
         if (p.ip.isValid()) {
             next_hop_mac = result;
         }
