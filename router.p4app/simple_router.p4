@@ -79,7 +79,7 @@ header ARP_h {
  */
 // Digest header
 header digest_header_h {
-    bit<8>   src_port;
+    bit<9>   src_port;
     bit<8>   digest_code;
 }
 
@@ -165,7 +165,7 @@ control MyIngress(inout Parsed_packet p,
     
     action send_to_cpu(digCode_t dig_code) {
         standard_metadata.egress_spec = CPU_PORT;
-        p.digest.src_port = (bit<8>)standard_metadata.ingress_port; 
+        p.digest.src_port = standard_metadata.ingress_port; 
         p.digest.digest_code = dig_code;
         p.digest.setValid();
     }
