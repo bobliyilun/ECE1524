@@ -23,7 +23,7 @@ net.start()
 s1 = net.get('s1')
 
 tables_api = Bmv2_grpc_tables_api(s1)
-enable_pwospf = True
+enable_pwospf = False
 config = Config(tables_api, enable_pwospf, s1.intfs[1].name)
 config.parse_config_file('./topos/single_router.json')
 config.populate_tables()
