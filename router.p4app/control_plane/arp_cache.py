@@ -36,7 +36,8 @@ class ARP_cache():
         self.ifaces = config.ifaces
         self.sendp = config.sendp
         self.rtable = config.rtable
-
+        self.ifaces = config.ifaces
+        self.arp_list = []
         # TODO: initialize ARP handling thread(s)?
         # TODO: define additional helper methods
         # One possible approach for handling the ARP cache is to define two
@@ -45,4 +46,32 @@ class ARP_cache():
         #    sending and ICMP host unreachable if none of the requests receive
         #    a response
         # 2. To remove stale cache entries
+
+    def handle_arp_miss(self, pkt):
+
+        sendp(pkt, iface=self.dma_iface, verbose=False)
+
+    # def handleArpReply(self, pkt):
+    #     # add replies from hosts to cache
+    #     self.addMacAddr(pkt[ARP].hwsrc, pkt[CPUMetadata].srcPort)
+    #     self.addIPAddr(pkt[ARP].psrc, pkt[ARP].hwsrc)
+    #     self.send(pkt)
+
+    # def handleArpRequest(self, pkt):
+    #     # add requests from hosts to cache
+    #     self.addMacAddr(pkt[ARP].hwsrc, pkt[CPUMetadata].srcPort)
+    #     self.addIPAddr(pkt[ARP].psrc, pkt[ARP].hwsrc)
+
+    #     # respond to requests addressed to any router interface
+    #     if pkt[ARP].pdst in self.intf_ips:
+    #         dstIP = pkt[ARP].pdst
+    #         pkt[Ether].dst = pkt[Ether].src
+    #         pkt[Ether].src = self.MAC
+    #         pkt[ARP].op = 2 # reply
+    #         pkt[ARP].hwdst = pkt[ARP].hwsrc
+    #         pkt[ARP].pdst = pkt[ARP].psrc
+    #         pkt[ARP].hwsrc = self.MAC
+    #         pkt[ARP].psrc = dstIP
+
+    #     self.send(pkt)
 
