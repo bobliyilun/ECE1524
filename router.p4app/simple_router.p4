@@ -225,7 +225,7 @@ control MyIngress(inout Parsed_packet p,
             NoAction;// arp_miss;
         }
         size = 1024;
-        default_action = arp_miss();
+        default_action = NoAction;
     }
 
     table local_ip_table {
