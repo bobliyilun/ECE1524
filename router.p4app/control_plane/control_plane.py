@@ -88,4 +88,4 @@ class Control_plane(Thread):
         # pkt is a Scapy packet with the format:
         #   Digest_data() / Ether() / ... payload ...
         # TODO: handle the packet appropriately
-        #print()
+        print(pkt)
