@@ -222,7 +222,7 @@ control MyIngress(inout Parsed_packet p,
         }
         actions = {
             arp_respond;
-            arp_miss;
+            NoAction;// arp_miss;
         }
         size = 1024;
         default_action = arp_miss();
