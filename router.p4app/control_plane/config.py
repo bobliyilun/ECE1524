@@ -107,7 +107,7 @@ class Config():
     @param pkt the packet to forward
     """
     def send_to_dp(self, pkt):
-        print_send = 0
+        print_send = 1
         if print_send:
             print("Sending packet over DMA: -----------")
             pkt.show()
