@@ -83,9 +83,10 @@ class Control_plane(Thread):
     """
     def handle_pkt(self, pkt):
         pkt = Digest_data(bytes(pkt))
+        pkt.show()
         if not self.pkt_valid(pkt): return
 
         # pkt is a Scapy packet with the format:
         #   Digest_data() / Ether() / ... payload ...
         # TODO: handle the packet appropriately
-        print(pkt)
+        # print(pkt)
