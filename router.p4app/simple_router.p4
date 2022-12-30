@@ -132,21 +132,21 @@ parser MyParser(packet_in b,
 control MyVerifyChecksum(inout Parsed_packet p, inout user_metadata_t meta) {
     apply {
         // TODO: Verify the IPv4 checksum
-            verify_checksum(
-            p.ip.isValid(),
-            { p.ip.version,
-              p.ip.ihl,
-              p.ip.diffserv,
-              p.ip.totalLen,
-              p.ip.identification,
-              p.ip.flags,
-              p.ip.fragOffset,
-              p.ip.ttl,
-              p.ip.protocol,
-              p.ip.srcAddr,
-              p.ip.dstAddr },
-            p.ip.hdrChecksum,
-            HashAlgorithm.csum16);
+            // verify_checksum(
+            // p.ip.isValid(),
+            // { p.ip.version,
+            //   p.ip.ihl,
+            //   p.ip.diffserv,
+            //   p.ip.totalLen,
+            //   p.ip.identification,
+            //   p.ip.flags,
+            //   p.ip.fragOffset,
+            //   p.ip.ttl,
+            //   p.ip.protocol,
+            //   p.ip.srcAddr,
+            //   p.ip.dstAddr },
+            // p.ip.hdrChecksum,
+            // HashAlgorithm.csum16);
     }
 }
 
