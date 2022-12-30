@@ -14,7 +14,7 @@
 #include <v1model.p4>
 
 
-typedef bit<9>  port_t;
+typedef bit<8>  port_t;
 typedef bit<48> EthAddr_t;
 typedef bit<32> IPv4Addr_t;
 
@@ -79,7 +79,7 @@ header ARP_h {
  */
 // Digest header
 header digest_header_h {
-    bit<9>   src_port;
+    bit<8>   src_port;
     bit<8>   digest_code;
 }
 
