@@ -206,7 +206,7 @@ control MyIngress(inout Parsed_packet p,
     // TODO: Is this what the routing table is supposed to look like?
     table routing_table {
         key = {
-            p.ip.dstAddr: ternary;
+            p.ip.dstAddr: lpm;
         }
         actions = {
             ipv4_forward;
