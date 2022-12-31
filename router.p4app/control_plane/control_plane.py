@@ -83,10 +83,16 @@ class Control_plane(Thread):
     """
     def handle_pkt(self, pkt):
         pkt = Digest_data(bytes(pkt))
-        pkt.show()
         if not self.pkt_valid(pkt): return
         # Tables_populator(self.tables_api).load_arp_cache(self.arp_cache)
         # pkt is a Scapy packet with the format:
         #   Digest_data() / Ether() / ... payload ...
         # TODO: handle the packet appropriately
-        # print(pkt)
+        if pkt[Digest_data].digest_code == DIG_ARP_MISS:
+            self.arp_cache.handle_arp_miss(pkt)
+            return
+        elif pkt[Digest_data].digest_code == DIG_ARP_REPLY:
+            self.arp_cache.handle_arp_reply(pkt)
+            return
+        else:
+            return
