@@ -87,5 +87,5 @@ class ARP_cache():
                 self.arp_pending_reply.remove(s)
                 sendp(t, iface=self.dma_iface, verbose=False)
                 return
-        sendp(pkt, iface=self.dma_iface, verbose=False;)
+        sendp(pkt, iface=self.dma_iface, verbose=False)
 
