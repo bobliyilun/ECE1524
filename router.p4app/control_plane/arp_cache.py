@@ -37,7 +37,7 @@ class ARP_cache():
         self.sendp = config.sendp
         self.rtable = config.rtable
         self.arp_pending_reply = {}
-        self.seen_arp_request = []
+        
         # TODO: initialize ARP handling thread(s)?
         # TODO: define additional helper methods
         # One possible approach for handling the ARP cache is to define two
@@ -48,6 +48,31 @@ class ARP_cache():
         # 2. To remove stale cache entries
 
     def handle_arp_miss(self, pkt):
+        t = Ether()/ARP()
+        if IP in pkt:
+            self.arp_pending_reply[pkt] = 0 # Counter to determine if it is stale
+            t[Ether].dst = ETH_BROADCAST
+            t[Ether].src = pkt[Ether].src
+
+            t[ARP].hwdst = ETH_BROADCAST
+            t[ARP].pdst = pkt[IP].dst
+            t[ARP].hwsrc = pkt[Ether].src
+            t[ARP].psrc = pkt[IP].src
+
+        elif ARP in pkt:
+            t = pkt
+        
+        self.tables_api.table_cam_add_entry(ARP_CACHE_TABLE_NAME, match_fields={"next_hop_ipv4":  t[ARP].psrc},\
+             action_name='MyIngress.arp_respond', action_params={"result": t[ARP].hwsrc})
+
+        for i in self.ifaces:
+            if IP in pkt:
+                if i.ip != pkt[IP].dst:
+                    sendp(t, iface=i, verbose=False)
+            elif ARP in pkt:
+                sendp(t, iface=i, verbose=False)
+
+    def handle_arp_reply(self, pkt):
         self.arp_pending_reply[pkt] = 0
         if pkt in self.seen_arp_request:
             return
@@ -63,7 +88,7 @@ class ARP_cache():
             t[ARP].hwsrc = pkt[Ether].src
             t[ARP].psrc = pkt[IP].src
             
-        else if ARP in pkt:
+        elif ARP in pkt:
             t[Ether].dst = ETH_BROADCAST
             t[Ether].src = pkt[Ether].src
 
@@ -78,7 +103,7 @@ class ARP_cache():
             if IP in pkt:
                 if i.ip != pkt[IP].dst:
                     sendp(t, iface=i, verbose=False)
-            else if ARP in pkt:
+            elif ARP in pkt:
                 sendp(t, iface=i, verbose=False)
 
 

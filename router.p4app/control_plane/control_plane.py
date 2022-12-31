@@ -85,7 +85,7 @@ class Control_plane(Thread):
         pkt = Digest_data(bytes(pkt))
         pkt.show()
         if not self.pkt_valid(pkt): return
-        
+        # Tables_populator(self.tables_api).load_arp_cache(self.arp_cache)
         # pkt is a Scapy packet with the format:
         #   Digest_data() / Ether() / ... payload ...
         # TODO: handle the packet appropriately
