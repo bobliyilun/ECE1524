@@ -36,7 +36,8 @@ class ARP_cache():
         self.ifaces = config.ifaces
         self.sendp = config.sendp
         self.rtable = config.rtable
-        self.arp_pending_reply = {}
+        self.dma_iface = config.dma_iface
+        self.arp_pending_reply = []
         
         # TODO: initialize ARP handling thread(s)?
         # TODO: define additional helper methods
@@ -50,7 +51,7 @@ class ARP_cache():
     def handle_arp_miss(self, pkt):
         t = Ether()/ARP()
         if IP in pkt:
-            self.arp_pending_reply[pkt] = 0 # Counter to determine if it is stale
+            self.arp_pending_reply.append(pkt) # Counter to determine if it is stale
             t[Ether].dst = ETH_BROADCAST
             t[Ether].src = pkt[Ether].src
 
@@ -67,43 +68,24 @@ class ARP_cache():
 
         for i in self.ifaces:
             if IP in pkt:
-                if i.ip != pkt[IP].dst:
+                if (i.ip != pkt[IP].dst) and (i.ip != pkt[IP].src):
                     sendp(t, iface=i, verbose=False)
-            elif ARP in pkt:
-                sendp(t, iface=i, verbose=False)
+
+            if ARP in pkt:
+                if (i.ip != pkt[ARP].psrc) and (i.ip != pkt[ARP].pdst):
+                    sendp(t, iface=i, verbose=False)
 
     def handle_arp_reply(self, pkt):
-        self.arp_pending_reply[pkt] = 0
-        if pkt in self.seen_arp_request:
-            return
-        self.seen_arp_request.append(pkt)
-        t = Ether()/ARP()
-        if IP in pkt:
-            t[Ether].dst = ETH_BROADCAST
-            t[Ether].src = pkt[Ether].src
-
-            t[ARP].hwdst = ETH_BROADCAST
-            t[ARP].pdst = pkt[IP].dst
-
-            t[ARP].hwsrc = pkt[Ether].src
-            t[ARP].psrc = pkt[IP].src
-            
-        elif ARP in pkt:
-            t[Ether].dst = ETH_BROADCAST
-            t[Ether].src = pkt[Ether].src
-
-            t[ARP].hwdst = ETH_BROADCAST
-            t[ARP].pdst = pkt[ARP].pdst
-
-            t[ARP].hwsrc = pkt[Ether].src
-            t[ARP].psrc = pkt[IP].src
-            
-
-        for i in self.ifaces:
-            if IP in pkt:
-                if i.ip != pkt[IP].dst:
-                    sendp(t, iface=i, verbose=False)
-            elif ARP in pkt:
-                sendp(t, iface=i, verbose=False)
-
+        t = None
+        for s in self.arp_pending_reply:
+            if s[IP].dst == pkt[ARP].psrc:
+                s[Ether].src = s[Ether].dst
+                s[Ether].dst = pkt[ARP].hwsrc
+                t = s
+                self.tables_api.table_cam_add_entry(ARP_CACHE_TABLE_NAME, match_fields={"next_hop_ipv4":  s[ARP].psrc},\
+                action_name='MyIngress.arp_respond', action_params={"result": s[ARP].hwsrc})
+                self.arp_pending_reply.remove(s)
+                sendp(t, iface=self.dma_iface, verbose=False)
+                return
+        sendp(pkt, iface=self.dma_iface, verbose=False;)
 
