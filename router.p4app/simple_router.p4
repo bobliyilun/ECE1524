@@ -191,6 +191,7 @@ control MyIngress(inout Parsed_packet p,
         }
     }
 
+    // actions dealing with specific case with their corresponding code.
     action arp_miss() {
         send_to_cpu(DIG_ARP_MISS);
     }
@@ -209,8 +210,8 @@ control MyIngress(inout Parsed_packet p,
             p.ip.dstAddr: ternary;
         }
         actions = {
-            ipv4_forward;
-            route_miss;
+            ipv4_forward; // we have found the nexthop ip, time to check the arp table for next hop mac
+            route_miss; // need to tell control
         }
         size = 1024;
         default_action = route_miss();
@@ -221,8 +222,8 @@ control MyIngress(inout Parsed_packet p,
             next_hop_ipv4: exact;
         }
         actions = {
-            arp_respond;
-            arp_miss;
+            arp_respond; // if it's ipv4, then we have found next hop mac, if it is arp request, then send back a reply
+            arp_miss; // send to cpu
         }
         size = 1024;
         default_action = arp_miss;
@@ -233,7 +234,7 @@ control MyIngress(inout Parsed_packet p,
             p.ip.dstAddr: exact;
         }
         actions = {
-            local_hit;
+            local_hit; // on hit, send to cpu
             NoAction;
         }
         size = 1024;
@@ -247,8 +248,9 @@ control MyIngress(inout Parsed_packet p,
             if (p.ip.ttl <= 0) {
                 send_to_cpu(DIG_TTL_EXCEEDED);
             }
-            else {
-                if (local_ip_table.apply().miss){
+            else { 
+                // avoid sending to cpu multiple times
+                if (local_ip_table.apply().miss){ // if the pkt is not destined for this router, send to cpu. 
                     routing_table.apply();
                 }
             }
@@ -262,10 +264,11 @@ control MyIngress(inout Parsed_packet p,
                 // ARP_table.apply();
             }
         }
-        else {
-            drop();
-        }  
+        // else {
+        //     drop(); // in other cases just drop
+        // }  
         if ((standard_metadata.egress_spec != CPU_PORT) && (next_hop_ipv4 != 0)) {
+            // if next_hop_ip has found a hit in the arp cache
             if (arp_cache_table.apply().hit && p.ip.isValid()) {
                 p.ethernet.srcAddr = p.ethernet.dstAddr;
                 p.ethernet.dstAddr = next_hop_mac;
