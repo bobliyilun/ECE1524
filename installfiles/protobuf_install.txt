@@ -1,0 +1,1133 @@
+Script started on 2022-12-24 19:02:31-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="165" LINES="43"]
+[?2004h]0;root@ECE1524: /home/bobroot@ECE1524:/home/bob# ls
+[?2004l[0m[01;34mDesktop[0m  [01;34mDocuments[0m  [01;34mDownloads[0m  [01;34mMusic[0m  [01;34mPictures[0m  [01;34mprotobuf[0m  [01;34mPublic[0m  [01;34msnap[0m  submission.txt  [01;34mTemplates[0m  [01;34mVideos[0m
+[?2004h]0;root@ECE1524: /home/bobroot@ECE1524:/home/bob# cd protobuf/
+[?2004l[?2004h]0;root@ECE1524: /home/bob/protobufroot@ECE1524:/home/bob/protobuf# ls
+[?2004lappveyor.bat    CODE_OF_CONDUCT.md  [0m[01;34mexamples[0m                           [01;34mkokoro[0m              Protobuf-C++.podspec  README.md                  version.json
+appveyor.yml    [01;34mconformance[0m         [01;32mfix_permissions.sh[0m                 LICENSE             protobuf_deps.bzl     [01;32mregenerate_stale_files.sh[0m  WORKSPACE
+BUILD.bazel     CONTRIBUTING.md     [01;32mgenerate_changelog.py[0m              maven_install.json  Protobuf.podspec      [01;34mruby[0m
+[01;34mbuild_defs[0m      CONTRIBUTORS.txt    [01;32mgenerate_descriptor_proto.sh[0m       [01;34mobjectivec[0m          protobuf_release.bzl  SECURITY.md
+CHANGES.txt     [01;34mcsharp[0m              global.json                        [01;34mphp[0m                 protobuf_version.bzl  [01;34msrc[0m
+[01;34mcmake[0m           [01;34mdocs[0m                google3_export_generated_files.sh  [01;34mpkg[0m                 [01;32mpush_auto_update.sh[0m   [01;34mthird_party[0m
+CMakeLists.txt  [01;34meditors[0m             [01;34mjava[0m                               protobuf.bzl        [01;34mpython[0m                [01;34mtoolchain[0m
+[?2004h]0;root@ECE1524: /home/bob/protobufroot@ECE1524:/home/bob/protobuf# [7mgit checkout v3.18.1[27mgit checkout v3.18.1
+[?2004lNote: switching to 'v3.18.1'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 0dab03ba7 Update protobuf version to 3.18.1 (#9051)
+[?2004h]0;root@ECE1524: /home/bob/protobufroot@ECE1524:/home/bob/protobuf# [7mgit submodule update --init --recursive[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit submodule update --init --recursive
+[?2004lSubmodule 'third_party/benchmark' (https://github.com/google/benchmark.git) registered for path 'third_party/benchmark'
+Submodule 'third_party/googletest' (https://github.com/google/googletest.git) registered for path 'third_party/googletest'
+Cloning into '/home/bob/protobuf/third_party/benchmark'...
+Cloning into '/home/bob/protobuf/third_party/googletest'...
+Submodule path 'third_party/benchmark': checked out '5b7683f49e1e9223cf9927b24f6fd3d6bd82e3f8'
+Submodule path 'third_party/googletest': checked out '5ec7f0c4a113e2f18ac2c6cc7df51ad6afc24081'
+[?2004h]0;root@ECE1524: /home/bob/protobufroot@ECE1524:/home/bob/protobuf# [7m./autogen.sh[27m./autogen.sh
+[?2004l+ test -d third_party/googletest
++ mkdir -p third_party/googletest/m4
++ autoreconf -f -i -Wall,no-obsolete
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'build-aux'.
+libtoolize: copying file 'build-aux/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+configure.ac:30: warning: The macro `AC_PROG_LIBTOOL' is obsolete.
+configure.ac:30: You should run autoupdate.
+m4/libtool.m4:99: AC_PROG_LIBTOOL is expanded from...
+configure.ac:30: the top level
+configure.ac:51: warning: The macro `AC_LANG_C' is obsolete.
+configure.ac:51: You should run autoupdate.
+./lib/autoconf/c.m4:72: AC_LANG_C is expanded from...
+m4/acx_pthread.m4:63: ACX_PTHREAD is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+configure.ac:51: the top level
+configure.ac:51: warning: The macro `AC_TRY_LINK' is obsolete.
+configure.ac:51: You should run autoupdate.
+./lib/autoconf/general.m4:2920: AC_TRY_LINK is expanded from...
+m4/acx_pthread.m4:63: ACX_PTHREAD is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+configure.ac:51: the top level
+configure.ac:27: installing 'build-aux/compile'
+configure.ac:30: installing 'build-aux/config.guess'
+configure.ac:30: installing 'build-aux/config.sub'
+configure.ac:24: installing 'build-aux/install-sh'
+configure.ac:24: installing 'build-aux/missing'
+Makefile.am: installing 'build-aux/depcomp'
+parallel-tests: installing 'build-aux/test-driver'
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'build-aux'.
+libtoolize: copying file 'build-aux/ltmain.sh'
+libtoolize: Consider adding 'AC_CONFIG_MACRO_DIRS([m4])' to configure.ac,
+libtoolize: and rerunning libtoolize and aclocal.
+libtoolize: Consider adding '-I m4' to ACLOCAL_AMFLAGS in Makefile.am.
+configure.ac:25: warning: The macro `AC_PROG_LIBTOOL' is obsolete.
+configure.ac:25: You should run autoupdate.
+aclocal.m4:121: AC_PROG_LIBTOOL is expanded from...
+configure.ac:25: the top level
+configure.ac:48: warning: The macro `AC_LANG_C' is obsolete.
+configure.ac:48: You should run autoupdate.
+./lib/autoconf/c.m4:72: AC_LANG_C is expanded from...
+../googletest/m4/acx_pthread.m4:63: ACX_PTHREAD is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+configure.ac:48: the top level
+configure.ac:48: warning: The macro `AC_TRY_LINK' is obsolete.
+configure.ac:48: You should run autoupdate.
+./lib/autoconf/general.m4:2920: AC_TRY_LINK is expanded from...
+../googletest/m4/acx_pthread.m4:63: ACX_PTHREAD is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+configure.ac:48: the top level
+configure.ac:22: installing 'build-aux/compile'
+configure.ac:25: installing 'build-aux/config.guess'
+configure.ac:25: installing 'build-aux/config.sub'
+configure.ac:19: installing 'build-aux/install-sh'
+configure.ac:19: installing 'build-aux/missing'
+Makefile.am: installing 'build-aux/depcomp'
+parallel-tests: installing 'build-aux/test-driver'
+configure.ac:13: installing 'build-aux/install-sh'
+configure.ac:13: installing 'build-aux/missing'
+libtoolize: putting auxiliary files in '.'.
+libtoolize: copying file './ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+configure.ac:78: warning: The macro `AC_PROG_CXX_FOR_BUILD' is obsolete.
+configure.ac:78: You should run autoupdate.
+m4/ax_prog_cxx_for_build.m4:36: AC_PROG_CXX_FOR_BUILD is expanded from...
+configure.ac:78: the top level
+configure.ac:109: warning: The macro `AC_PROG_LIBTOOL' is obsolete.
+configure.ac:109: You should run autoupdate.
+m4/libtool.m4:99: AC_PROG_LIBTOOL is expanded from...
+configure.ac:109: the top level
+configure.ac:131: warning: The macro `AC_HEADER_STDC' is obsolete.
+configure.ac:131: You should run autoupdate.
+./lib/autoconf/headers.m4:704: AC_HEADER_STDC is expanded from...
+configure.ac:131: the top level
+configure.ac:212: warning: $as_echo is obsolete; use AS_ECHO(["message"]) instead
+lib/m4sugar/m4sh.m4:692: _AS_IF_ELSE is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+./lib/autoconf/general.m4:2249: AC_CACHE_VAL is expanded from...
+./lib/autoconf/general.m4:2270: AC_CACHE_CHECK is expanded from...
+m4/ax_pthread.m4:89: AX_PTHREAD is expanded from...
+configure.ac:212: the top level
+configure.ac:215: warning: The macro `AC_LANG_CPLUSPLUS' is obsolete.
+configure.ac:215: You should run autoupdate.
+./lib/autoconf/c.m4:262: AC_LANG_CPLUSPLUS is expanded from...
+m4/stl_hash.m4:10: AC_CXX_STL_HASH is expanded from...
+configure.ac:215: the top level
+configure.ac:215: warning: The macro `AC_TRY_COMPILE' is obsolete.
+configure.ac:215: You should run autoupdate.
+./lib/autoconf/general.m4:2847: AC_TRY_COMPILE is expanded from...
+m4/stl_hash.m4:10: AC_CXX_STL_HASH is expanded from...
+configure.ac:215: the top level
+configure.ac:81: installing './ar-lib'
+configure.ac:76: installing './compile'
+configure.ac:46: installing './config.guess'
+configure.ac:46: installing './config.sub'
+configure.ac:48: installing './install-sh'
+configure.ac:48: installing './missing'
+benchmarks/Makefile.am: installing './depcomp'
+conformance/Makefile.am:362: warning: shell python --version 2>&1: non-POSIX variable name
+conformance/Makefile.am:362: (probably a GNU make extension)
+conformance/Makefile.am:372: warning: shell python --version 2>&1: non-POSIX variable name
+conformance/Makefile.am:372: (probably a GNU make extension)
+parallel-tests: installing './test-driver'
++ rm -rf autom4te.cache config.h.in~
++ exit 0
+[?2004h]0;root@ECE1524: /home/bob/protobufroot@ECE1524:/home/bob/protobuf# ./autogen.sh[K[7m./configure[27m./configure
+[?2004lchecking whether to enable maintainer-specific portions of Makefiles... yes
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking target system type... x86_64-pc-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether UID '0' is supported by ustar format... yes
+checking whether GID '0' is supported by ustar format... yes
+checking how to create a ustar tar archive... gnutar
+checking whether make supports nested variables... (cached) yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of gcc... gcc3
+checking for g++... g++
+checking whether the compiler supports GNU C++... yes
+checking whether g++ accepts -g... yes
+checking for g++ option to enable C++11 features... none needed
+checking dependency style of g++... gcc3
+checking how to run the C preprocessor... gcc -E
+checking for gcc... gcc
+checking whether the compiler supports GNU C... (cached) yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... (cached) none needed
+checking whether gcc understands -c and -o together... (cached) yes
+checking dependency style of gcc... (cached) gcc3
+checking how to run the C preprocessor... gcc -E
+checking how to run the C++ preprocessor... g++ -E
+checking for g++... g++
+checking whether the compiler supports GNU C++... (cached) yes
+checking whether g++ accepts -g... yes
+checking for g++ option to enable C++11 features... (cached) none needed
+checking dependency style of g++... (cached) gcc3
+checking how to run the C++ preprocessor... g++ -E
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for wchar.h... yes
+checking for minix/config.h... no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking whether _XOPEN_SOURCE should be defined... no
+checking for ar... ar
+checking the archiver (ar) interface... ar
+checking for gcc... gcc
+checking whether the compiler supports GNU Objective C... no
+checking whether gcc accepts -g... no
+checking dependency style of gcc... gcc3
+checking C++ compiler flags...... use default: -O2  -g -std=c++11 -DNDEBUG
+checking for g++ options needed to detect all undeclared functions... none needed
+checking whether __SUNPRO_CC is declared... no
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking how to run the C++ preprocessor... g++ -E
+checking for ld used by g++... /usr/bin/ld -m elf_x86_64
+checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld... yes
+checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC -DPIC
+checking if g++ PIC flag -fPIC -DPIC works... yes
+checking if g++ static flag -static works... yes
+checking if g++ supports -c -o file.o... yes
+checking if g++ supports -c -o file.o... (cached) yes
+checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether the linker supports version scripts... yes
+checking for egrep... (cached) /usr/bin/grep -E
+checking for fcntl.h... yes
+checking for inttypes.h... (cached) yes
+checking for limits.h... yes
+checking for stdlib.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking for working memcmp... yes
+checking for working strtod... yes
+checking for ftruncate... yes
+checking for memset... yes
+checking for mkdir... yes
+checking for strchr... yes
+checking for strerror... yes
+checking for strtol... yes
+checking zlib version... ok (1.2.0.4 or later)
+checking for library containing zlibVersion... -lz
+checking whether g++ supports C++11 features by default... yes
+checking whether -latomic is needed... no
+checking whether gcc is Clang... no
+checking whether pthreads work with "-pthread" and "-lpthread"... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking whether more special flags are required for pthreads... no
+checking for PTHREAD_PRIO_INHERIT... yes
+checking the location of hash_map... <unordered_map>
+checking whether -llog is needed... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating benchmarks/Makefile
+config.status: creating conformance/Makefile
+config.status: creating protobuf.pc
+config.status: creating protobuf-lite.pc
+config.status: creating config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+=== configuring in third_party/googletest (/home/bob/protobuf/third_party/googletest)
+configure: running /bin/bash ./configure --disable-option-checking '--prefix=/usr/local'  --cache-file=/dev/null --srcdir=.
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+=== configuring in googletest (/home/bob/protobuf/third_party/googletest/googletest)
+configure: running /bin/bash ./configure --disable-option-checking '--prefix=/usr/local'  --cache-file=/dev/null --srcdir=.
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of gcc... gcc3
+checking for g++... g++
+checking whether the compiler supports GNU C++... yes
+checking whether g++ accepts -g... yes
+checking for g++ option to enable C++11 features... none needed
+checking dependency style of g++... gcc3
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking how to run the C++ preprocessor... g++ -E
+checking for ld used by g++... /usr/bin/ld -m elf_x86_64
+checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld... yes
+checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC -DPIC
+checking if g++ PIC flag -fPIC -DPIC works... yes
+checking if g++ static flag -static works... yes
+checking if g++ supports -c -o file.o... yes
+checking if g++ supports -c -o file.o... (cached) yes
+checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for python... :
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking whether to check for GCC pthread/shared inconsistencies... yes
+checking whether -pthread is sufficient with -shared... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating scripts/gtest-config
+config.status: creating build-aux/config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+=== configuring in googlemock (/home/bob/protobuf/third_party/googletest/googlemock)
+configure: running /bin/bash ./configure --disable-option-checking '--prefix=/usr/local'  --cache-file=/dev/null --srcdir=.
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of gcc... gcc3
+checking for g++... g++
+checking whether the compiler supports GNU C++... yes
+checking whether g++ accepts -g... yes
+checking for g++ option to enable C++11 features... none needed
+checking dependency style of g++... gcc3
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking how to run the C++ preprocessor... g++ -E
+checking for ld used by g++... /usr/bin/ld -m elf_x86_64
+checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld... yes
+checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC -DPIC
+checking if g++ PIC flag -fPIC -DPIC works... yes
+checking if g++ static flag -static works... yes
+checking if g++ supports -c -o file.o... yes
+checking if g++ supports -c -o file.o... (cached) yes
+checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for python... :
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking whether to check for GCC pthread/shared inconsistencies... yes
+checking whether -pthread is sufficient with -shared... yes
+checking for gtest-config... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating scripts/gmock-config
+config.status: creating build-aux/config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+[?2004h]0;root@ECE1524: /home/bob/protobufroot@ECE1524:/home/bob/protobuf# [7msudo make install[27msudo make install
+[?2004lMaking install in .
+make[1]: Entering directory '/home/bob/protobuf'
+make[2]: Entering directory '/home/bob/protobuf'
+make[2]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/usr/local/lib/pkgconfig'
+ /usr/bin/install -c -m 644 protobuf.pc protobuf-lite.pc '/usr/local/lib/pkgconfig'
+make[2]: Leaving directory '/home/bob/protobuf'
+make[1]: Leaving directory '/home/bob/protobuf'
+Making install in src
+make[1]: Entering directory '/home/bob/protobuf/src'
+  CXX      google/protobuf/compiler/main.o
+  CXX      google/protobuf/any_lite.lo
+  CXX      google/protobuf/arena.lo
+  CXX      google/protobuf/arenastring.lo
+  CXX      google/protobuf/extension_set.lo
+  CXX      google/protobuf/generated_enum_util.lo
+  CXX      google/protobuf/generated_message_table_driven_lite.lo
+  CXX      google/protobuf/generated_message_util.lo
+  CXX      google/protobuf/implicit_weak_message.lo
+  CXX      google/protobuf/inlined_string_field.lo
+  CXX      google/protobuf/io/coded_stream.lo
+  CXX      google/protobuf/io/io_win32.lo
+  CXX      google/protobuf/io/strtod.lo
+  CXX      google/protobuf/io/zero_copy_stream.lo
+  CXX      google/protobuf/io/zero_copy_stream_impl.lo
+  CXX      google/protobuf/io/zero_copy_stream_impl_lite.lo
+  CXX      google/protobuf/map.lo
+  CXX      google/protobuf/message_lite.lo
+In file included from [01m[K/usr/include/string.h:535[m[K,
+                 from [01m[K./google/protobuf/stubs/port.h:39[m[K,
+                 from [01m[K./google/protobuf/stubs/common.h:48[m[K,
+                 from [01m[K./google/protobuf/message_lite.h:45[m[K,
+                 from [01m[Kgoogle/protobuf/message_lite.cc:36[m[K:
+In function ‘[01m[Kvoid* memcpy(void*, const void*, size_t)[m[K’,
+    inlined from ‘[01m[Kuint8_t* google::protobuf::io::EpsCopyOutputStream::WriteRaw(const void*, int, uint8_t*)[m[K’ at [01m[K./google/protobuf/io/coded_stream.h:701:16[m[K,
+    inlined from ‘[01m[Kvirtual uint8_t* google::protobuf::internal::ImplicitWeakMessage::_InternalSerialize(uint8_t*, google::protobuf::io::EpsCopyOutputStream*) const[m[K’ at [01m[K./google/protobuf/implicit_weak_message.h:85:28[m[K,
+    inlined from ‘[01m[Kbool google::protobuf::MessageLite::SerializePartialToZeroCopyStream(google::protobuf::io::ZeroCopyOutputStream*) const[m[K’ at [01m[Kgoogle/protobuf/message_lite.cc:419:30[m[K:
+[01m[K/usr/include/x86_64-linux-gnu/bits/string_fortified.h:29:33:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid* __builtin___memcpy_chk(void*, const void*, long unsigned int, long unsigned int)[m[K’ specified size between 18446744071562067968 and 18446744073709551615 exceeds maximum object size 9223372036854775807 [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wstringop-overflow=-Wstringop-overflow=]8;;[m[K]
+   29 |   return [01;35m[K__builtin___memcpy_chk (__dest, __src, __len,[m[K
+      |          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+   30 | [01;35m[K                                 __glibc_objsize0 (__dest))[m[K;
+      |                                  [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+  CXX      google/protobuf/parse_context.lo
+  CXX      google/protobuf/repeated_field.lo
+  CXX      google/protobuf/stubs/bytestream.lo
+  CXX      google/protobuf/stubs/common.lo
+  CXX      google/protobuf/stubs/int128.lo
+  CXX      google/protobuf/stubs/status.lo
+  CXX      google/protobuf/stubs/statusor.lo
+  CXX      google/protobuf/stubs/stringpiece.lo
+  CXX      google/protobuf/stubs/stringprintf.lo
+  CXX      google/protobuf/stubs/structurally_valid.lo
+  CXX      google/protobuf/stubs/strutil.lo
+  CXX      google/protobuf/stubs/time.lo
+  CXX      google/protobuf/wire_format_lite.lo
+  CXX      google/protobuf/any.lo
+  CXX      google/protobuf/any.pb.lo
+  CXX      google/protobuf/api.pb.lo
+  CXX      google/protobuf/compiler/importer.lo
+  CXX      google/protobuf/compiler/parser.lo
+  CXX      google/protobuf/descriptor.lo
+  CXX      google/protobuf/descriptor.pb.lo
+  CXX      google/protobuf/descriptor_database.lo
+  CXX      google/protobuf/duration.pb.lo
+  CXX      google/protobuf/dynamic_message.lo
+  CXX      google/protobuf/empty.pb.lo
+  CXX      google/protobuf/extension_set_heavy.lo
+  CXX      google/protobuf/field_mask.pb.lo
+  CXX      google/protobuf/generated_message_bases.lo
+  CXX      google/protobuf/generated_message_reflection.lo
+  CXX      google/protobuf/generated_message_table_driven.lo
+  CXX      google/protobuf/io/gzip_stream.lo
+  CXX      google/protobuf/io/printer.lo
+  CXX      google/protobuf/io/tokenizer.lo
+  CXX      google/protobuf/map_field.lo
+  CXX      google/protobuf/message.lo
+  CXX      google/protobuf/reflection_ops.lo
+  CXX      google/protobuf/service.lo
+  CXX      google/protobuf/source_context.pb.lo
+  CXX      google/protobuf/struct.pb.lo
+  CXX      google/protobuf/stubs/substitute.lo
+  CXX      google/protobuf/text_format.lo
+  CXX      google/protobuf/timestamp.pb.lo
+  CXX      google/protobuf/type.pb.lo
+  CXX      google/protobuf/unknown_field_set.lo
+  CXX      google/protobuf/util/delimited_message_util.lo
+  CXX      google/protobuf/util/field_comparator.lo
+  CXX      google/protobuf/util/field_mask_util.lo
+  CXX      google/protobuf/util/internal/datapiece.lo
+  CXX      google/protobuf/util/internal/default_value_objectwriter.lo
+  CXX      google/protobuf/util/internal/error_listener.lo
+  CXX      google/protobuf/util/internal/field_mask_utility.lo
+  CXX      google/protobuf/util/internal/json_escaping.lo
+  CXX      google/protobuf/util/internal/json_objectwriter.lo
+  CXX      google/protobuf/util/internal/json_stream_parser.lo
+  CXX      google/protobuf/util/internal/object_writer.lo
+  CXX      google/protobuf/util/internal/proto_writer.lo
+  CXX      google/protobuf/util/internal/protostream_objectsource.lo
+  CXX      google/protobuf/util/internal/protostream_objectwriter.lo
+  CXX      google/protobuf/util/internal/type_info.lo
+  CXX      google/protobuf/util/internal/type_info_test_helper.lo
+  CXX      google/protobuf/util/internal/utility.lo
+  CXX      google/protobuf/util/json_util.lo
+  CXX      google/protobuf/util/message_differencer.lo
+  CXX      google/protobuf/util/time_util.lo
+  CXX      google/protobuf/util/type_resolver_util.lo
+  CXX      google/protobuf/wire_format.lo
+  CXX      google/protobuf/wrappers.pb.lo
+  CXXLD    libprotobuf.la
+  CXX      google/protobuf/compiler/code_generator.lo
+  CXX      google/protobuf/compiler/command_line_interface.lo
+  CXX      google/protobuf/compiler/cpp/cpp_enum.lo
+  CXX      google/protobuf/compiler/cpp/cpp_enum_field.lo
+  CXX      google/protobuf/compiler/cpp/cpp_extension.lo
+  CXX      google/protobuf/compiler/cpp/cpp_field.lo
+  CXX      google/protobuf/compiler/cpp/cpp_file.lo
+  CXX      google/protobuf/compiler/cpp/cpp_generator.lo
+  CXX      google/protobuf/compiler/cpp/cpp_helpers.lo
+  CXX      google/protobuf/compiler/cpp/cpp_map_field.lo
+  CXX      google/protobuf/compiler/cpp/cpp_message.lo
+  CXX      google/protobuf/compiler/cpp/cpp_message_field.lo
+  CXX      google/protobuf/compiler/cpp/cpp_padding_optimizer.lo
+  CXX      google/protobuf/compiler/cpp/cpp_parse_function_generator.lo
+  CXX      google/protobuf/compiler/cpp/cpp_primitive_field.lo
+  CXX      google/protobuf/compiler/cpp/cpp_service.lo
+  CXX      google/protobuf/compiler/cpp/cpp_string_field.lo
+  CXX      google/protobuf/compiler/csharp/csharp_doc_comment.lo
+  CXX      google/protobuf/compiler/csharp/csharp_enum.lo
+  CXX      google/protobuf/compiler/csharp/csharp_enum_field.lo
+  CXX      google/protobuf/compiler/csharp/csharp_field_base.lo
+  CXX      google/protobuf/compiler/csharp/csharp_generator.lo
+  CXX      google/protobuf/compiler/csharp/csharp_helpers.lo
+  CXX      google/protobuf/compiler/csharp/csharp_map_field.lo
+  CXX      google/protobuf/compiler/csharp/csharp_message.lo
+  CXX      google/protobuf/compiler/csharp/csharp_message_field.lo
+  CXX      google/protobuf/compiler/csharp/csharp_primitive_field.lo
+  CXX      google/protobuf/compiler/csharp/csharp_reflection_class.lo
+  CXX      google/protobuf/compiler/csharp/csharp_repeated_enum_field.lo
+  CXX      google/protobuf/compiler/csharp/csharp_repeated_message_field.lo
+  CXX      google/protobuf/compiler/csharp/csharp_repeated_primitive_field.lo
+  CXX      google/protobuf/compiler/csharp/csharp_source_generator_base.lo
+  CXX      google/protobuf/compiler/csharp/csharp_wrapper_field.lo
+  CXX      google/protobuf/compiler/java/java_context.lo
+  CXX      google/protobuf/compiler/java/java_doc_comment.lo
+  CXX      google/protobuf/compiler/java/java_enum.lo
+  CXX      google/protobuf/compiler/java/java_enum_field.lo
+  CXX      google/protobuf/compiler/java/java_enum_field_lite.lo
+  CXX      google/protobuf/compiler/java/java_enum_lite.lo
+  CXX      google/protobuf/compiler/java/java_extension.lo
+  CXX      google/protobuf/compiler/java/java_extension_lite.lo
+  CXX      google/protobuf/compiler/java/java_field.lo
+  CXX      google/protobuf/compiler/java/java_file.lo
+  CXX      google/protobuf/compiler/java/java_generator.lo
+  CXX      google/protobuf/compiler/java/java_generator_factory.lo
+  CXX      google/protobuf/compiler/java/java_helpers.lo
+  CXX      google/protobuf/compiler/java/java_kotlin_generator.lo
+  CXX      google/protobuf/compiler/java/java_map_field.lo
+  CXX      google/protobuf/compiler/java/java_map_field_lite.lo
+  CXX      google/protobuf/compiler/java/java_message.lo
+  CXX      google/protobuf/compiler/java/java_message_builder.lo
+  CXX      google/protobuf/compiler/java/java_message_builder_lite.lo
+  CXX      google/protobuf/compiler/java/java_message_field.lo
+  CXX      google/protobuf/compiler/java/java_message_field_lite.lo
+  CXX      google/protobuf/compiler/java/java_message_lite.lo
+  CXX      google/protobuf/compiler/java/java_name_resolver.lo
+  CXX      google/protobuf/compiler/java/java_primitive_field.lo
+  CXX      google/protobuf/compiler/java/java_primitive_field_lite.lo
+  CXX      google/protobuf/compiler/java/java_service.lo
+  CXX      google/protobuf/compiler/java/java_shared_code_generator.lo
+  CXX      google/protobuf/compiler/java/java_string_field.lo
+  CXX      google/protobuf/compiler/java/java_string_field_lite.lo
+  CXX      google/protobuf/compiler/js/js_generator.lo
+  CXX      google/protobuf/compiler/js/well_known_types_embed.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_enum.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_enum_field.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_extension.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_field.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_file.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_generator.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_helpers.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_map_field.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_message.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_message_field.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_oneof.lo
+  CXX      google/protobuf/compiler/objectivec/objectivec_primitive_field.lo
+  CXX      google/protobuf/compiler/php/php_generator.lo
+  CXX      google/protobuf/compiler/plugin.lo
+  CXX      google/protobuf/compiler/plugin.pb.lo
+  CXX      google/protobuf/compiler/python/python_generator.lo
+  CXX      google/protobuf/compiler/ruby/ruby_generator.lo
+  CXX      google/protobuf/compiler/subprocess.lo
+  CXX      google/protobuf/compiler/zip_writer.lo
+  CXXLD    libprotoc.la
+  CXXLD    protoc
+  CXXLD    libprotobuf-lite.la
+make[2]: Entering directory '/home/bob/protobuf/src'
+ /usr/bin/mkdir -p '/usr/local/lib'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libprotobuf-lite.la libprotobuf.la libprotoc.la '/usr/local/lib'
+libtool: install: /usr/bin/install -c .libs/libprotobuf-lite.so.29.0.1 /usr/local/lib/libprotobuf-lite.so.29.0.1
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotobuf-lite.so.29.0.1 libprotobuf-lite.so.29 || { rm -f libprotobuf-lite.so.29 && ln -s libprotobuf-lite.so.29.0.1 libprotobuf-lite.so.29; }; })
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotobuf-lite.so.29.0.1 libprotobuf-lite.so || { rm -f libprotobuf-lite.so && ln -s libprotobuf-lite.so.29.0.1 libprotobuf-lite.so; }; })
+libtool: install: /usr/bin/install -c .libs/libprotobuf-lite.lai /usr/local/lib/libprotobuf-lite.la
+libtool: install: /usr/bin/install -c .libs/libprotobuf.so.29.0.1 /usr/local/lib/libprotobuf.so.29.0.1
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotobuf.so.29.0.1 libprotobuf.so.29 || { rm -f libprotobuf.so.29 && ln -s libprotobuf.so.29.0.1 libprotobuf.so.29; }; })
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotobuf.so.29.0.1 libprotobuf.so || { rm -f libprotobuf.so && ln -s libprotobuf.so.29.0.1 libprotobuf.so; }; })
+libtool: install: /usr/bin/install -c .libs/libprotobuf.lai /usr/local/lib/libprotobuf.la
+libtool: [31mwarning[0m: [1mrelinking 'libprotoc.la'[0m
+libtool: install: (cd /home/bob/protobuf/src; /bin/bash "/home/bob/protobuf/libtool"  --silent --tag CXX --mode=relink g++ -pthread -DHAVE_PTHREAD=1 -DHAVE_ZLIB=1 -Wall -Wno-sign-compare -O2 -g -std=c++11 -DNDEBUG -version-info 29:1:0 -export-dynamic -no-undefined -Wl,--version-script=./libprotoc.map -o libprotoc.la -rpath /usr/local/lib google/protobuf/compiler/code_generator.lo google/protobuf/compiler/command_line_interface.lo google/protobuf/compiler/cpp/cpp_enum.lo google/protobuf/compiler/cpp/cpp_enum_field.lo google/protobuf/compiler/cpp/cpp_extension.lo google/protobuf/compiler/cpp/cpp_field.lo google/protobuf/compiler/cpp/cpp_file.lo google/protobuf/compiler/cpp/cpp_generator.lo google/protobuf/compiler/cpp/cpp_helpers.lo google/protobuf/compiler/cpp/cpp_map_field.lo google/protobuf/compiler/cpp/cpp_message.lo google/protobuf/compiler/cpp/cpp_message_field.lo google/protobuf/compiler/cpp/cpp_padding_optimizer.lo google/protobuf/compiler/cpp/cpp_parse_function_generator.lo google/protobuf/compiler/cpp/cpp_primitive_field.lo google/protobuf/compiler/cpp/cpp_service.lo google/protobuf/compiler/cpp/cpp_string_field.lo google/protobuf/compiler/csharp/csharp_doc_comment.lo google/protobuf/compiler/csharp/csharp_enum.lo google/protobuf/compiler/csharp/csharp_enum_field.lo google/protobuf/compiler/csharp/csharp_field_base.lo google/protobuf/compiler/csharp/csharp_generator.lo google/protobuf/compiler/csharp/csharp_helpers.lo google/protobuf/compiler/csharp/csharp_map_field.lo google/protobuf/compiler/csharp/csharp_message.lo google/protobuf/compiler/csharp/csharp_message_field.lo google/protobuf/compiler/csharp/csharp_primitive_field.lo google/protobuf/compiler/csharp/csharp_reflection_class.lo google/protobuf/compiler/csharp/csharp_repeated_enum_field.lo google/protobuf/compiler/csharp/csharp_repeated_message_field.lo google/protobuf/compiler/csharp/csharp_repeated_primitive_field.lo google/protobuf/compiler/csharp/csharp_source_generator_base.lo google/protobuf/compiler/csharp/csharp_wrapper_field.lo google/protobuf/compiler/java/java_context.lo google/protobuf/compiler/java/java_doc_comment.lo google/protobuf/compiler/java/java_enum.lo google/protobuf/compiler/java/java_enum_field.lo google/protobuf/compiler/java/java_enum_field_lite.lo google/protobuf/compiler/java/java_enum_lite.lo google/protobuf/compiler/java/java_extension.lo google/protobuf/compiler/java/java_extension_lite.lo google/protobuf/compiler/java/java_field.lo google/protobuf/compiler/java/java_file.lo google/protobuf/compiler/java/java_generator.lo google/protobuf/compiler/java/java_generator_factory.lo google/protobuf/compiler/java/java_helpers.lo google/protobuf/compiler/java/java_kotlin_generator.lo google/protobuf/compiler/java/java_map_field.lo google/protobuf/compiler/java/java_map_field_lite.lo google/protobuf/compiler/java/java_message.lo google/protobuf/compiler/java/java_message_builder.lo google/protobuf/compiler/java/java_message_builder_lite.lo google/protobuf/compiler/java/java_message_field.lo google/protobuf/compiler/java/java_message_field_lite.lo google/protobuf/compiler/java/java_message_lite.lo google/protobuf/compiler/java/java_name_resolver.lo google/protobuf/compiler/java/java_primitive_field.lo google/protobuf/compiler/java/java_primitive_field_lite.lo google/protobuf/compiler/java/java_service.lo google/protobuf/compiler/java/java_shared_code_generator.lo google/protobuf/compiler/java/java_string_field.lo google/protobuf/compiler/java/java_string_field_lite.lo google/protobuf/compiler/js/js_generator.lo google/protobuf/compiler/js/well_known_types_embed.lo google/protobuf/compiler/objectivec/objectivec_enum.lo google/protobuf/compiler/objectivec/objectivec_enum_field.lo google/protobuf/compiler/objectivec/objectivec_extension.lo google/protobuf/compiler/objectivec/objectivec_field.lo google/protobuf/compiler/objectivec/objectivec_file.lo google/protobuf/compiler/objectivec/objectivec_generator.lo google/protobuf/compiler/objectivec/objectivec_helpers.lo google/protobuf/compiler/objectivec/objectivec_map_field.lo google/protobuf/compiler/objectivec/objectivec_message.lo google/protobuf/compiler/objectivec/objectivec_message_field.lo google/protobuf/compiler/objectivec/objectivec_oneof.lo google/protobuf/compiler/objectivec/objectivec_primitive_field.lo google/protobuf/compiler/php/php_generator.lo google/protobuf/compiler/plugin.lo google/protobuf/compiler/plugin.pb.lo google/protobuf/compiler/python/python_generator.lo google/protobuf/compiler/ruby/ruby_generator.lo google/protobuf/compiler/subprocess.lo google/protobuf/compiler/zip_writer.lo -lpthread libprotobuf.la -lz )
+libtool: install: /usr/bin/install -c .libs/libprotoc.so.29.0.1T /usr/local/lib/libprotoc.so.29.0.1
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotoc.so.29.0.1 libprotoc.so.29 || { rm -f libprotoc.so.29 && ln -s libprotoc.so.29.0.1 libprotoc.so.29; }; })
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotoc.so.29.0.1 libprotoc.so || { rm -f libprotoc.so && ln -s libprotoc.so.29.0.1 libprotoc.so; }; })
+libtool: install: /usr/bin/install -c .libs/libprotoc.lai /usr/local/lib/libprotoc.la
+libtool: install: /usr/bin/install -c .libs/libprotobuf-lite.a /usr/local/lib/libprotobuf-lite.a
+libtool: install: chmod 644 /usr/local/lib/libprotobuf-lite.a
+libtool: install: ranlib /usr/local/lib/libprotobuf-lite.a
+libtool: install: /usr/bin/install -c .libs/libprotobuf.a /usr/local/lib/libprotobuf.a
+libtool: install: chmod 644 /usr/local/lib/libprotobuf.a
+libtool: install: ranlib /usr/local/lib/libprotobuf.a
+libtool: install: /usr/bin/install -c .libs/libprotoc.a /usr/local/lib/libprotoc.a
+libtool: install: chmod 644 /usr/local/lib/libprotoc.a
+libtool: install: ranlib /usr/local/lib/libprotoc.a
+libtool: finish: PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/sbin" ldconfig -n /usr/local/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /usr/local/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the '-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the 'LD_RUN_PATH' environment variable
+     during linking
+   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+ /usr/bin/mkdir -p '/usr/local/bin'
+  /bin/bash ../libtool   --mode=install /usr/bin/install -c protoc '/usr/local/bin'
+libtool: install: /usr/bin/install -c .libs/protoc /usr/local/bin/protoc
+ /usr/bin/mkdir -p '/usr/local/include'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/plugin.proto '/usr/local/include/google/protobuf/compiler'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf'
+ /usr/bin/install -c -m 644  google/protobuf/any.proto google/protobuf/api.proto google/protobuf/descriptor.proto google/protobuf/duration.proto google/protobuf/empty.proto google/protobuf/field_mask.proto google/protobuf/source_context.proto google/protobuf/struct.proto google/protobuf/timestamp.proto google/protobuf/type.proto google/protobuf/wrappers.proto '/usr/local/include/google/protobuf'
+ /usr/bin/mkdir -p '/usr/local/include'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf'
+ /usr/bin/install -c -m 644  google/protobuf/any.h google/protobuf/any.pb.h google/protobuf/api.pb.h google/protobuf/arena.h google/protobuf/arena_impl.h google/protobuf/arenastring.h google/protobuf/descriptor.h google/protobuf/descriptor.pb.h google/protobuf/descriptor_database.h google/protobuf/duration.pb.h google/protobuf/dynamic_message.h google/protobuf/empty.pb.h google/protobuf/extension_set.h google/protobuf/extension_set_inl.h google/protobuf/field_access_listener.h google/protobuf/field_mask.pb.h google/protobuf/generated_enum_reflection.h google/protobuf/generated_enum_util.h google/protobuf/generated_message_bases.h google/protobuf/generated_message_reflection.h google/protobuf/generated_message_table_driven.h google/protobuf/generated_message_tctable_decl.h google/protobuf/generated_message_tctable_impl.h google/protobuf/generated_message_tctable_impl.inc google/protobuf/generated_message_util.h google/protobuf/has_bits.h google/protobuf/implicit_weak_message.h google/protobuf/inlined_string_field.h google/protobuf/map.h google/protobuf/map_entry.h google/protobuf/map_entry_lite.h google/protobuf/map_field.h google/protobuf/map_field_inl.h google/protobuf/map_field_lite.h google/protobuf/map_type_handler.h google/protobuf/message.h google/protobuf/message_lite.h google/protobuf/metadata.h google/protobuf/metadata_lite.h google/protobuf/parse_context.h '/usr/local/include/google/protobuf'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/php'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/php/php_generator.h '/usr/local/include/google/protobuf/compiler/php'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/code_generator.h google/protobuf/compiler/command_line_interface.h google/protobuf/compiler/importer.h google/protobuf/compiler/parser.h google/protobuf/compiler/plugin.h google/protobuf/compiler/plugin.pb.h '/usr/local/include/google/protobuf/compiler'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/objectivec'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/objectivec/objectivec_generator.h google/protobuf/compiler/objectivec/objectivec_helpers.h '/usr/local/include/google/protobuf/compiler/objectivec'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/cpp'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/cpp/cpp_generator.h '/usr/local/include/google/protobuf/compiler/cpp'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/util'
+ /usr/bin/install -c -m 644  google/protobuf/util/delimited_message_util.h google/protobuf/util/field_comparator.h google/protobuf/util/field_mask_util.h google/protobuf/util/json_util.h google/protobuf/util/message_differencer.h google/protobuf/util/time_util.h google/protobuf/util/type_resolver.h google/protobuf/util/type_resolver_util.h '/usr/local/include/google/protobuf/util'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/csharp'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/csharp/csharp_generator.h google/protobuf/compiler/csharp/csharp_names.h '/usr/local/include/google/protobuf/compiler/csharp'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/ruby'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/ruby/ruby_generator.h '/usr/local/include/google/protobuf/compiler/ruby'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/stubs'
+ /usr/bin/install -c -m 644  google/protobuf/stubs/bytestream.h google/protobuf/stubs/callback.h google/protobuf/stubs/casts.h google/protobuf/stubs/common.h google/protobuf/stubs/hash.h google/protobuf/stubs/logging.h google/protobuf/stubs/macros.h google/protobuf/stubs/map_util.h google/protobuf/stubs/mutex.h google/protobuf/stubs/once.h google/protobuf/stubs/platform_macros.h google/protobuf/stubs/port.h google/protobuf/stubs/status.h google/protobuf/stubs/stl_util.h google/protobuf/stubs/stringpiece.h google/protobuf/stubs/strutil.h google/protobuf/stubs/template_util.h '/usr/local/include/google/protobuf/stubs'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf'
+ /usr/bin/install -c -m 644  google/protobuf/port_def.inc google/protobuf/port_undef.inc google/protobuf/port.h google/protobuf/reflection.h google/protobuf/reflection_ops.h google/protobuf/repeated_field.h google/protobuf/service.h google/protobuf/source_context.pb.h google/protobuf/string_member_robber.h google/protobuf/struct.pb.h google/protobuf/text_format.h google/protobuf/timestamp.pb.h google/protobuf/type.pb.h google/protobuf/unknown_field_set.h google/protobuf/wire_format.h google/protobuf/wire_format_lite.h google/protobuf/wrappers.pb.h '/usr/local/include/google/protobuf'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/io'
+ /usr/bin/install -c -m 644  google/protobuf/io/coded_stream.h google/protobuf/io/gzip_stream.h google/protobuf/io/io_win32.h google/protobuf/io/printer.h google/protobuf/io/strtod.h google/protobuf/io/tokenizer.h google/protobuf/io/zero_copy_stream.h google/protobuf/io/zero_copy_stream_impl.h google/protobuf/io/zero_copy_stream_impl_lite.h '/usr/local/include/google/protobuf/io'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/js'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/js/js_generator.h google/protobuf/compiler/js/well_known_types_embed.h '/usr/local/include/google/protobuf/compiler/js'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/java'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/java/java_generator.h google/protobuf/compiler/java/java_kotlin_generator.h google/protobuf/compiler/java/java_names.h '/usr/local/include/google/protobuf/compiler/java'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/python'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/python/python_generator.h '/usr/local/include/google/protobuf/compiler/python'
+make[2]: Leaving directory '/home/bob/protobuf/src'
+make[1]: Leaving directory '/home/bob/protobuf/src'
+[?2004h]0;root@ECE1524: /home/bob/protobufroot@ECE1524:/home/bob/protobuf# sudo make install[6P./configuresudo make install
+[?2004lMaking install in .
+make[1]: Entering directory '/home/bob/protobuf'
+make[2]: Entering directory '/home/bob/protobuf'
+make[2]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/usr/local/lib/pkgconfig'
+ /usr/bin/install -c -m 644 protobuf.pc protobuf-lite.pc '/usr/local/lib/pkgconfig'
+make[2]: Leaving directory '/home/bob/protobuf'
+make[1]: Leaving directory '/home/bob/protobuf'
+Making install in src
+make[1]: Entering directory '/home/bob/protobuf/src'
+make[2]: Entering directory '/home/bob/protobuf/src'
+ /usr/bin/mkdir -p '/usr/local/lib'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libprotobuf-lite.la libprotobuf.la libprotoc.la '/usr/local/lib'
+libtool: install: /usr/bin/install -c .libs/libprotobuf-lite.so.29.0.1 /usr/local/lib/libprotobuf-lite.so.29.0.1
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotobuf-lite.so.29.0.1 libprotobuf-lite.so.29 || { rm -f libprotobuf-lite.so.29 && ln -s libprotobuf-lite.so.29.0.1 libprotobuf-lite.so.29; }; })
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotobuf-lite.so.29.0.1 libprotobuf-lite.so || { rm -f libprotobuf-lite.so && ln -s libprotobuf-lite.so.29.0.1 libprotobuf-lite.so; }; })
+libtool: install: /usr/bin/install -c .libs/libprotobuf-lite.lai /usr/local/lib/libprotobuf-lite.la
+libtool: install: /usr/bin/install -c .libs/libprotobuf.so.29.0.1 /usr/local/lib/libprotobuf.so.29.0.1
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotobuf.so.29.0.1 libprotobuf.so.29 || { rm -f libprotobuf.so.29 && ln -s libprotobuf.so.29.0.1 libprotobuf.so.29; }; })
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotobuf.so.29.0.1 libprotobuf.so || { rm -f libprotobuf.so && ln -s libprotobuf.so.29.0.1 libprotobuf.so; }; })
+libtool: install: /usr/bin/install -c .libs/libprotobuf.lai /usr/local/lib/libprotobuf.la
+libtool: [31mwarning[0m: [1mrelinking 'libprotoc.la'[0m
+libtool: install: (cd /home/bob/protobuf/src; /bin/bash "/home/bob/protobuf/libtool"  --silent --tag CXX --mode=relink g++ -pthread -DHAVE_PTHREAD=1 -DHAVE_ZLIB=1 -Wall -Wno-sign-compare -O2 -g -std=c++11 -DNDEBUG -version-info 29:1:0 -export-dynamic -no-undefined -Wl,--version-script=./libprotoc.map -o libprotoc.la -rpath /usr/local/lib google/protobuf/compiler/code_generator.lo google/protobuf/compiler/command_line_interface.lo google/protobuf/compiler/cpp/cpp_enum.lo google/protobuf/compiler/cpp/cpp_enum_field.lo google/protobuf/compiler/cpp/cpp_extension.lo google/protobuf/compiler/cpp/cpp_field.lo google/protobuf/compiler/cpp/cpp_file.lo google/protobuf/compiler/cpp/cpp_generator.lo google/protobuf/compiler/cpp/cpp_helpers.lo google/protobuf/compiler/cpp/cpp_map_field.lo google/protobuf/compiler/cpp/cpp_message.lo google/protobuf/compiler/cpp/cpp_message_field.lo google/protobuf/compiler/cpp/cpp_padding_optimizer.lo google/protobuf/compiler/cpp/cpp_parse_function_generator.lo google/protobuf/compiler/cpp/cpp_primitive_field.lo google/protobuf/compiler/cpp/cpp_service.lo google/protobuf/compiler/cpp/cpp_string_field.lo google/protobuf/compiler/csharp/csharp_doc_comment.lo google/protobuf/compiler/csharp/csharp_enum.lo google/protobuf/compiler/csharp/csharp_enum_field.lo google/protobuf/compiler/csharp/csharp_field_base.lo google/protobuf/compiler/csharp/csharp_generator.lo google/protobuf/compiler/csharp/csharp_helpers.lo google/protobuf/compiler/csharp/csharp_map_field.lo google/protobuf/compiler/csharp/csharp_message.lo google/protobuf/compiler/csharp/csharp_message_field.lo google/protobuf/compiler/csharp/csharp_primitive_field.lo google/protobuf/compiler/csharp/csharp_reflection_class.lo google/protobuf/compiler/csharp/csharp_repeated_enum_field.lo google/protobuf/compiler/csharp/csharp_repeated_message_field.lo google/protobuf/compiler/csharp/csharp_repeated_primitive_field.lo google/protobuf/compiler/csharp/csharp_source_generator_base.lo google/protobuf/compiler/csharp/csharp_wrapper_field.lo google/protobuf/compiler/java/java_context.lo google/protobuf/compiler/java/java_doc_comment.lo google/protobuf/compiler/java/java_enum.lo google/protobuf/compiler/java/java_enum_field.lo google/protobuf/compiler/java/java_enum_field_lite.lo google/protobuf/compiler/java/java_enum_lite.lo google/protobuf/compiler/java/java_extension.lo google/protobuf/compiler/java/java_extension_lite.lo google/protobuf/compiler/java/java_field.lo google/protobuf/compiler/java/java_file.lo google/protobuf/compiler/java/java_generator.lo google/protobuf/compiler/java/java_generator_factory.lo google/protobuf/compiler/java/java_helpers.lo google/protobuf/compiler/java/java_kotlin_generator.lo google/protobuf/compiler/java/java_map_field.lo google/protobuf/compiler/java/java_map_field_lite.lo google/protobuf/compiler/java/java_message.lo google/protobuf/compiler/java/java_message_builder.lo google/protobuf/compiler/java/java_message_builder_lite.lo google/protobuf/compiler/java/java_message_field.lo google/protobuf/compiler/java/java_message_field_lite.lo google/protobuf/compiler/java/java_message_lite.lo google/protobuf/compiler/java/java_name_resolver.lo google/protobuf/compiler/java/java_primitive_field.lo google/protobuf/compiler/java/java_primitive_field_lite.lo google/protobuf/compiler/java/java_service.lo google/protobuf/compiler/java/java_shared_code_generator.lo google/protobuf/compiler/java/java_string_field.lo google/protobuf/compiler/java/java_string_field_lite.lo google/protobuf/compiler/js/js_generator.lo google/protobuf/compiler/js/well_known_types_embed.lo google/protobuf/compiler/objectivec/objectivec_enum.lo google/protobuf/compiler/objectivec/objectivec_enum_field.lo google/protobuf/compiler/objectivec/objectivec_extension.lo google/protobuf/compiler/objectivec/objectivec_field.lo google/protobuf/compiler/objectivec/objectivec_file.lo google/protobuf/compiler/objectivec/objectivec_generator.lo google/protobuf/compiler/objectivec/objectivec_helpers.lo google/protobuf/compiler/objectivec/objectivec_map_field.lo google/protobuf/compiler/objectivec/objectivec_message.lo google/protobuf/compiler/objectivec/objectivec_message_field.lo google/protobuf/compiler/objectivec/objectivec_oneof.lo google/protobuf/compiler/objectivec/objectivec_primitive_field.lo google/protobuf/compiler/php/php_generator.lo google/protobuf/compiler/plugin.lo google/protobuf/compiler/plugin.pb.lo google/protobuf/compiler/python/python_generator.lo google/protobuf/compiler/ruby/ruby_generator.lo google/protobuf/compiler/subprocess.lo google/protobuf/compiler/zip_writer.lo -lpthread libprotobuf.la -lz )
+libtool: install: /usr/bin/install -c .libs/libprotoc.so.29.0.1T /usr/local/lib/libprotoc.so.29.0.1
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotoc.so.29.0.1 libprotoc.so.29 || { rm -f libprotoc.so.29 && ln -s libprotoc.so.29.0.1 libprotoc.so.29; }; })
+libtool: install: (cd /usr/local/lib && { ln -s -f libprotoc.so.29.0.1 libprotoc.so || { rm -f libprotoc.so && ln -s libprotoc.so.29.0.1 libprotoc.so; }; })
+libtool: install: /usr/bin/install -c .libs/libprotoc.lai /usr/local/lib/libprotoc.la
+libtool: install: /usr/bin/install -c .libs/libprotobuf-lite.a /usr/local/lib/libprotobuf-lite.a
+libtool: install: chmod 644 /usr/local/lib/libprotobuf-lite.a
+libtool: install: ranlib /usr/local/lib/libprotobuf-lite.a
+libtool: install: /usr/bin/install -c .libs/libprotobuf.a /usr/local/lib/libprotobuf.a
+libtool: install: chmod 644 /usr/local/lib/libprotobuf.a
+libtool: install: ranlib /usr/local/lib/libprotobuf.a
+libtool: install: /usr/bin/install -c .libs/libprotoc.a /usr/local/lib/libprotoc.a
+libtool: install: chmod 644 /usr/local/lib/libprotoc.a
+libtool: install: ranlib /usr/local/lib/libprotoc.a
+libtool: finish: PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/sbin" ldconfig -n /usr/local/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /usr/local/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the '-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the 'LD_RUN_PATH' environment variable
+     during linking
+   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+ /usr/bin/mkdir -p '/usr/local/bin'
+  /bin/bash ../libtool   --mode=install /usr/bin/install -c protoc '/usr/local/bin'
+libtool: install: /usr/bin/install -c .libs/protoc /usr/local/bin/protoc
+ /usr/bin/mkdir -p '/usr/local/include'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/plugin.proto '/usr/local/include/google/protobuf/compiler'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf'
+ /usr/bin/install -c -m 644  google/protobuf/any.proto google/protobuf/api.proto google/protobuf/descriptor.proto google/protobuf/duration.proto google/protobuf/empty.proto google/protobuf/field_mask.proto google/protobuf/source_context.proto google/protobuf/struct.proto google/protobuf/timestamp.proto google/protobuf/type.proto google/protobuf/wrappers.proto '/usr/local/include/google/protobuf'
+ /usr/bin/mkdir -p '/usr/local/include'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf'
+ /usr/bin/install -c -m 644  google/protobuf/any.h google/protobuf/any.pb.h google/protobuf/api.pb.h google/protobuf/arena.h google/protobuf/arena_impl.h google/protobuf/arenastring.h google/protobuf/descriptor.h google/protobuf/descriptor.pb.h google/protobuf/descriptor_database.h google/protobuf/duration.pb.h google/protobuf/dynamic_message.h google/protobuf/empty.pb.h google/protobuf/extension_set.h google/protobuf/extension_set_inl.h google/protobuf/field_access_listener.h google/protobuf/field_mask.pb.h google/protobuf/generated_enum_reflection.h google/protobuf/generated_enum_util.h google/protobuf/generated_message_bases.h google/protobuf/generated_message_reflection.h google/protobuf/generated_message_table_driven.h google/protobuf/generated_message_tctable_decl.h google/protobuf/generated_message_tctable_impl.h google/protobuf/generated_message_tctable_impl.inc google/protobuf/generated_message_util.h google/protobuf/has_bits.h google/protobuf/implicit_weak_message.h google/protobuf/inlined_string_field.h google/protobuf/map.h google/protobuf/map_entry.h google/protobuf/map_entry_lite.h google/protobuf/map_field.h google/protobuf/map_field_inl.h google/protobuf/map_field_lite.h google/protobuf/map_type_handler.h google/protobuf/message.h google/protobuf/message_lite.h google/protobuf/metadata.h google/protobuf/metadata_lite.h google/protobuf/parse_context.h '/usr/local/include/google/protobuf'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/php'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/php/php_generator.h '/usr/local/include/google/protobuf/compiler/php'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/code_generator.h google/protobuf/compiler/command_line_interface.h google/protobuf/compiler/importer.h google/protobuf/compiler/parser.h google/protobuf/compiler/plugin.h google/protobuf/compiler/plugin.pb.h '/usr/local/include/google/protobuf/compiler'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/objectivec'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/objectivec/objectivec_generator.h google/protobuf/compiler/objectivec/objectivec_helpers.h '/usr/local/include/google/protobuf/compiler/objectivec'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/cpp'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/cpp/cpp_generator.h '/usr/local/include/google/protobuf/compiler/cpp'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/util'
+ /usr/bin/install -c -m 644  google/protobuf/util/delimited_message_util.h google/protobuf/util/field_comparator.h google/protobuf/util/field_mask_util.h google/protobuf/util/json_util.h google/protobuf/util/message_differencer.h google/protobuf/util/time_util.h google/protobuf/util/type_resolver.h google/protobuf/util/type_resolver_util.h '/usr/local/include/google/protobuf/util'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/csharp'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/csharp/csharp_generator.h google/protobuf/compiler/csharp/csharp_names.h '/usr/local/include/google/protobuf/compiler/csharp'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/ruby'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/ruby/ruby_generator.h '/usr/local/include/google/protobuf/compiler/ruby'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/stubs'
+ /usr/bin/install -c -m 644  google/protobuf/stubs/bytestream.h google/protobuf/stubs/callback.h google/protobuf/stubs/casts.h google/protobuf/stubs/common.h google/protobuf/stubs/hash.h google/protobuf/stubs/logging.h google/protobuf/stubs/macros.h google/protobuf/stubs/map_util.h google/protobuf/stubs/mutex.h google/protobuf/stubs/once.h google/protobuf/stubs/platform_macros.h google/protobuf/stubs/port.h google/protobuf/stubs/status.h google/protobuf/stubs/stl_util.h google/protobuf/stubs/stringpiece.h google/protobuf/stubs/strutil.h google/protobuf/stubs/template_util.h '/usr/local/include/google/protobuf/stubs'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf'
+ /usr/bin/install -c -m 644  google/protobuf/port_def.inc google/protobuf/port_undef.inc google/protobuf/port.h google/protobuf/reflection.h google/protobuf/reflection_ops.h google/protobuf/repeated_field.h google/protobuf/service.h google/protobuf/source_context.pb.h google/protobuf/string_member_robber.h google/protobuf/struct.pb.h google/protobuf/text_format.h google/protobuf/timestamp.pb.h google/protobuf/type.pb.h google/protobuf/unknown_field_set.h google/protobuf/wire_format.h google/protobuf/wire_format_lite.h google/protobuf/wrappers.pb.h '/usr/local/include/google/protobuf'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/io'
+ /usr/bin/install -c -m 644  google/protobuf/io/coded_stream.h google/protobuf/io/gzip_stream.h google/protobuf/io/io_win32.h google/protobuf/io/printer.h google/protobuf/io/strtod.h google/protobuf/io/tokenizer.h google/protobuf/io/zero_copy_stream.h google/protobuf/io/zero_copy_stream_impl.h google/protobuf/io/zero_copy_stream_impl_lite.h '/usr/local/include/google/protobuf/io'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/js'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/js/js_generator.h google/protobuf/compiler/js/well_known_types_embed.h '/usr/local/include/google/protobuf/compiler/js'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/java'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/java/java_generator.h google/protobuf/compiler/java/java_kotlin_generator.h google/protobuf/compiler/java/java_names.h '/usr/local/include/google/protobuf/compiler/java'
+ /usr/bin/mkdir -p '/usr/local/include/google/protobuf/compiler/python'
+ /usr/bin/install -c -m 644  google/protobuf/compiler/python/python_generator.h '/usr/local/include/google/protobuf/compiler/python'
+make[2]: Leaving directory '/home/bob/protobuf/src'
+make[1]: Leaving directory '/home/bob/protobuf/src'
+[?2004h]0;root@ECE1524: /home/bob/protobufroot@ECE1524:/home/bob/protobuf# sudo ldconfig
+[?2004l[?2004h]0;root@ECE1524: /home/bob/protobufroot@ECE1524:/home/bob/protobuf# clear
+[?2004l[H[2J[3J[?2004h]0;root@ECE1524: /home/bob/protobufroot@ECE1524:/home/bob/protobuf# make clean
+[?2004lMaking clean in .
+make[1]: Entering directory '/home/bob/protobuf'
+rm -rf .libs _libs
+Making clean in googletest
+make[2]: Entering directory '/home/bob/protobuf/third_party/googletest'
+Making clean in googletest
+make[3]: Entering directory '/home/bob/protobuf/third_party/googletest/googletest'
+ rm -f samples/sample1_unittest samples/sample2_unittest samples/sample3_unittest samples/sample4_unittest samples/sample5_unittest samples/sample6_unittest samples/sample7_unittest samples/sample8_unittest samples/sample9_unittest samples/sample10_unittest test/gtest_all_test
+test -z "core" || rm -f core
+test -z "lib/libgtest.la lib/libgtest_main.la" || rm -f lib/libgtest.la lib/libgtest_main.la
+rm -f lib/so_locations
+rm -rf .libs _libs
+rm -rf lib/.libs lib/_libs
+rm -rf samples/.libs samples/_libs
+rm -rf src/.libs src/_libs
+rm -rf test/.libs test/_libs
+rm -f *.o
+rm -f fused-src/gtest/*.o
+rm -f samples/*.o
+rm -f src/*.o
+rm -f src/*.lo
+rm -f test/*.o
+test -z "samples/sample1_unittest.log samples/sample2_unittest.log samples/sample3_unittest.log samples/sample4_unittest.log samples/sample5_unittest.log samples/sample6_unittest.log samples/sample7_unittest.log samples/sample8_unittest.log samples/sample9_unittest.log samples/sample10_unittest.log test/gtest_all_test.log" || rm -f samples/sample1_unittest.log samples/sample2_unittest.log samples/sample3_unittest.log samples/sample4_unittest.log samples/sample5_unittest.log samples/sample6_unittest.log samples/sample7_unittest.log samples/sample8_unittest.log samples/sample9_unittest.log samples/sample10_unittest.log test/gtest_all_test.log
+test -z "samples/sample1_unittest.trs samples/sample2_unittest.trs samples/sample3_unittest.trs samples/sample4_unittest.trs samples/sample5_unittest.trs samples/sample6_unittest.trs samples/sample7_unittest.trs samples/sample8_unittest.trs samples/sample9_unittest.trs samples/sample10_unittest.trs test/gtest_all_test.trs" || rm -f samples/sample1_unittest.trs samples/sample2_unittest.trs samples/sample3_unittest.trs samples/sample4_unittest.trs samples/sample5_unittest.trs samples/sample6_unittest.trs samples/sample7_unittest.trs samples/sample8_unittest.trs samples/sample9_unittest.trs samples/sample10_unittest.trs test/gtest_all_test.trs
+test -z "test-suite.log" || rm -f test-suite.log
+rm -f *.lo
+make[3]: Leaving directory '/home/bob/protobuf/third_party/googletest/googletest'
+Making clean in googlemock
+make[3]: Entering directory '/home/bob/protobuf/third_party/googletest/googlemock'
+make[4]: Entering directory '/home/bob/protobuf/third_party/googletest/googlemock'
+ rm -f test/gmock-spec-builders_test test/gmock_link_test
+test -z "core" || rm -f core
+test -z "lib/libgmock.la lib/libgmock_main.la" || rm -f lib/libgmock.la lib/libgmock_main.la
+rm -f lib/so_locations
+rm -rf .libs _libs
+rm -rf lib/.libs lib/_libs
+rm -rf src/.libs src/_libs
+rm -rf test/.libs test/_libs
+rm -f *.o
+rm -f fused-src/*.o
+rm -f src/*.o
+rm -f src/*.lo
+rm -f test/*.o
+test -z "test/gmock-spec-builders_test.log test/gmock_link_test.log" || rm -f test/gmock-spec-builders_test.log test/gmock_link_test.log
+test -z "test/gmock-spec-builders_test.trs test/gmock_link_test.trs" || rm -f test/gmock-spec-builders_test.trs test/gmock_link_test.trs
+test -z "test-suite.log" || rm -f test-suite.log
+rm -f *.lo
+make[4]: Leaving directory '/home/bob/protobuf/third_party/googletest/googlemock'
+make[3]: Leaving directory '/home/bob/protobuf/third_party/googletest/googlemock'
+make[3]: Entering directory '/home/bob/protobuf/third_party/googletest'
+make[3]: Nothing to be done for 'clean-am'.
+make[3]: Leaving directory '/home/bob/protobuf/third_party/googletest'
+make[2]: Leaving directory '/home/bob/protobuf/third_party/googletest'
+rm -f *.lo
+make[1]: Leaving directory '/home/bob/protobuf'
+Making clean in src
+make[1]: Entering directory '/home/bob/protobuf/src'
+ rm -f protoc
+ rm -f protoc protobuf-test protobuf-lazy-descriptor-test protobuf-lite-test test_plugin protobuf-lite-arena-test no-warning-test zcgzip zcgunzip
+test -z "google/protobuf/map_lite_unittest.pb.cc google/protobuf/map_lite_unittest.pb.h google/protobuf/unittest_import_lite.pb.cc google/protobuf/unittest_import_lite.pb.h google/protobuf/unittest_import_public_lite.pb.cc google/protobuf/unittest_import_public_lite.pb.h google/protobuf/unittest_lite.pb.cc google/protobuf/unittest_lite.pb.h google/protobuf/any_test.pb.cc google/protobuf/any_test.pb.h google/protobuf/compiler/cpp/cpp_test_bad_identifiers.pb.cc google/protobuf/compiler/cpp/cpp_test_bad_identifiers.pb.h google/protobuf/compiler/cpp/cpp_test_large_enum_value.pb.cc google/protobuf/compiler/cpp/cpp_test_large_enum_value.pb.h google/protobuf/map_proto2_unittest.pb.cc google/protobuf/map_proto2_unittest.pb.h google/protobuf/map_unittest.pb.cc google/protobuf/map_unittest.pb.h google/protobuf/unittest.pb.cc google/protobuf/unittest.pb.h google/protobuf/unittest_arena.pb.cc google/protobuf/unittest_arena.pb.h google/protobuf/unittest_custom_options.pb.cc google/protobuf/unittest_custom_options.pb.h google/protobuf/unittest_drop_unknown_fields.pb.cc google/protobuf/unittest_drop_unknown_fields.pb.h google/protobuf/unittest_embed_optimize_for.pb.cc google/protobuf/unittest_embed_optimize_for.pb.h google/protobuf/unittest_empty.pb.cc google/protobuf/unittest_empty.pb.h google/protobuf/unittest_enormous_descriptor.pb.cc google/protobuf/unittest_enormous_descriptor.pb.h google/protobuf/unittest_import.pb.cc google/protobuf/unittest_import.pb.h google/protobuf/unittest_import_public.pb.cc google/protobuf/unittest_import_public.pb.h google/protobuf/unittest_lazy_dependencies.pb.cc google/protobuf/unittest_lazy_dependencies.pb.h google/protobuf/unittest_lazy_dependencies_custom_option.pb.cc google/protobuf/unittest_lazy_dependencies_custom_option.pb.h google/protobuf/unittest_lazy_dependencies_enum.pb.cc google/protobuf/unittest_lazy_dependencies_enum.pb.h google/protobuf/unittest_lite_imports_nonlite.pb.cc google/protobuf/unittest_lite_imports_nonlite.pb.h google/protobuf/unittest_mset.pb.cc google/protobuf/unittest_mset.pb.h google/protobuf/unittest_mset_wire_format.pb.cc google/protobuf/unittest_mset_wire_format.pb.h google/protobuf/unittest_no_field_presence.pb.cc google/protobuf/unittest_no_field_presence.pb.h google/protobuf/unittest_no_generic_services.pb.cc google/protobuf/unittest_no_generic_services.pb.h google/protobuf/unittest_optimize_for.pb.cc google/protobuf/unittest_optimize_for.pb.h google/protobuf/unittest_preserve_unknown_enum.pb.cc google/protobuf/unittest_preserve_unknown_enum.pb.h google/protobuf/unittest_preserve_unknown_enum2.pb.cc google/protobuf/unittest_preserve_unknown_enum2.pb.h google/protobuf/unittest_proto3.pb.cc google/protobuf/unittest_proto3.pb.h google/protobuf/unittest_proto3_arena.pb.cc google/protobuf/unittest_proto3_arena.pb.h google/protobuf/unittest_proto3_arena_lite.pb.cc google/protobuf/unittest_proto3_arena_lite.pb.h google/protobuf/unittest_proto3_lite.pb.cc google/protobuf/unittest_proto3_lite.pb.h google/protobuf/unittest_proto3_optional.pb.cc google/protobuf/unittest_proto3_optional.pb.h google/protobuf/unittest_well_known_types.pb.cc google/protobuf/unittest_well_known_types.pb.h google/protobuf/util/internal/testdata/anys.pb.cc google/protobuf/util/internal/testdata/anys.pb.h google/protobuf/util/internal/testdata/books.pb.cc google/protobuf/util/internal/testdata/books.pb.h google/protobuf/util/internal/testdata/default_value.pb.cc google/protobuf/util/internal/testdata/default_value.pb.h google/protobuf/util/internal/testdata/default_value_test.pb.cc google/protobuf/util/internal/testdata/default_value_test.pb.h google/protobuf/util/internal/testdata/field_mask.pb.cc google/protobuf/util/internal/testdata/field_mask.pb.h google/protobuf/util/internal/testdata/maps.pb.cc google/protobuf/util/internal/testdata/maps.pb.h google/protobuf/util/internal/testdata/oneofs.pb.cc google/protobuf/util/internal/testdata/oneofs.pb.h google/protobuf/util/internal/testdata/proto3.pb.cc google/protobuf/util/internal/testdata/proto3.pb.h google/protobuf/util/internal/testdata/struct.pb.cc google/protobuf/util/internal/testdata/struct.pb.h google/protobuf/util/internal/testdata/timestamp_duration.pb.cc google/protobuf/util/internal/testdata/timestamp_duration.pb.h google/protobuf/util/internal/testdata/wrappers.pb.cc google/protobuf/util/internal/testdata/wrappers.pb.h google/protobuf/util/json_format.pb.cc google/protobuf/util/json_format.pb.h google/protobuf/util/json_format_proto3.pb.cc google/protobuf/util/json_format_proto3.pb.h google/protobuf/util/message_differencer_unittest.pb.cc google/protobuf/util/message_differencer_unittest.pb.h unittest_proto_middleman testzip.jar testzip.list testzip.proto testzip.zip no_warning_test.cc" || rm -f google/protobuf/map_lite_unittest.pb.cc google/protobuf/map_lite_unittest.pb.h google/protobuf/unittest_import_lite.pb.cc google/protobuf/unittest_import_lite.pb.h google/protobuf/unittest_import_public_lite.pb.cc google/protobuf/unittest_import_public_lite.pb.h google/protobuf/unittest_lite.pb.cc google/protobuf/unittest_lite.pb.h google/protobuf/any_test.pb.cc google/protobuf/any_test.pb.h google/protobuf/compiler/cpp/cpp_test_bad_identifiers.pb.cc google/protobuf/compiler/cpp/cpp_test_bad_identifiers.pb.h google/protobuf/compiler/cpp/cpp_test_large_enum_value.pb.cc google/protobuf/compiler/cpp/cpp_test_large_enum_value.pb.h google/protobuf/map_proto2_unittest.pb.cc google/protobuf/map_proto2_unittest.pb.h google/protobuf/map_unittest.pb.cc google/protobuf/map_unittest.pb.h google/protobuf/unittest.pb.cc google/protobuf/unittest.pb.h google/protobuf/unittest_arena.pb.cc google/protobuf/unittest_arena.pb.h google/protobuf/unittest_custom_options.pb.cc google/protobuf/unittest_custom_options.pb.h google/protobuf/unittest_drop_unknown_fields.pb.cc google/protobuf/unittest_drop_unknown_fields.pb.h google/protobuf/unittest_embed_optimize_for.pb.cc google/protobuf/unittest_embed_optimize_for.pb.h google/protobuf/unittest_empty.pb.cc google/protobuf/unittest_empty.pb.h google/protobuf/unittest_enormous_descriptor.pb.cc google/protobuf/unittest_enormous_descriptor.pb.h google/protobuf/unittest_import.pb.cc google/protobuf/unittest_import.pb.h google/protobuf/unittest_import_public.pb.cc google/protobuf/unittest_import_public.pb.h google/protobuf/unittest_lazy_dependencies.pb.cc google/protobuf/unittest_lazy_dependencies.pb.h google/protobuf/unittest_lazy_dependencies_custom_option.pb.cc google/protobuf/unittest_lazy_dependencies_custom_option.pb.h google/protobuf/unittest_lazy_dependencies_enum.pb.cc google/protobuf/unittest_lazy_dependencies_enum.pb.h google/protobuf/unittest_lite_imports_nonlite.pb.cc google/protobuf/unittest_lite_imports_nonlite.pb.h google/protobuf/unittest_mset.pb.cc google/protobuf/unittest_mset.pb.h google/protobuf/unittest_mset_wire_format.pb.cc google/protobuf/unittest_mset_wire_format.pb.h google/protobuf/unittest_no_field_presence.pb.cc google/protobuf/unittest_no_field_presence.pb.h google/protobuf/unittest_no_generic_services.pb.cc google/protobuf/unittest_no_generic_services.pb.h google/protobuf/unittest_optimize_for.pb.cc google/protobuf/unittest_optimize_for.pb.h google/protobuf/unittest_preserve_unknown_enum.pb.cc google/protobuf/unittest_preserve_unknown_enum.pb.h google/protobuf/unittest_preserve_unknown_enum2.pb.cc google/protobuf/unittest_preserve_unknown_enum2.pb.h google/protobuf/unittest_proto3.pb.cc google/protobuf/unittest_proto3.pb.h google/protobuf/unittest_proto3_arena.pb.cc google/protobuf/unittest_proto3_arena.pb.h google/protobuf/unittest_proto3_arena_lite.pb.cc google/protobuf/unittest_proto3_arena_lite.pb.h google/protobuf/unittest_proto3_lite.pb.cc google/protobuf/unittest_proto3_lite.pb.h google/protobuf/unittest_proto3_optional.pb.cc google/protobuf/unittest_proto3_optional.pb.h google/protobuf/unittest_well_known_types.pb.cc google/protobuf/unittest_well_known_types.pb.h google/protobuf/util/internal/testdata/anys.pb.cc google/protobuf/util/internal/testdata/anys.pb.h google/protobuf/util/internal/testdata/books.pb.cc google/protobuf/util/internal/testdata/books.pb.h google/protobuf/util/internal/testdata/default_value.pb.cc google/protobuf/util/internal/testdata/default_value.pb.h google/protobuf/util/internal/testdata/default_value_test.pb.cc google/protobuf/util/internal/testdata/default_value_test.pb.h google/protobuf/util/internal/testdata/field_mask.pb.cc google/protobuf/util/internal/testdata/field_mask.pb.h google/protobuf/util/internal/testdata/maps.pb.cc google/protobuf/util/internal/testdata/maps.pb.h google/protobuf/util/internal/testdata/oneofs.pb.cc google/protobuf/util/internal/testdata/oneofs.pb.h google/protobuf/util/internal/testdata/proto3.pb.cc google/protobuf/util/internal/testdata/proto3.pb.h google/protobuf/util/internal/testdata/struct.pb.cc google/protobuf/util/internal/testdata/struct.pb.h google/protobuf/util/internal/testdata/timestamp_duration.pb.cc google/protobuf/util/internal/testdata/timestamp_duration.pb.h google/protobuf/util/internal/testdata/wrappers.pb.cc google/protobuf/util/internal/testdata/wrappers.pb.h google/protobuf/util/json_format.pb.cc google/protobuf/util/json_format.pb.h google/protobuf/util/json_format_proto3.pb.cc google/protobuf/util/json_format_proto3.pb.h google/protobuf/util/message_differencer_unittest.pb.cc google/protobuf/util/message_differencer_unittest.pb.h unittest_proto_middleman testzip.jar testzip.list testzip.proto testzip.zip no_warning_test.cc
+test -z "libprotobuf-lite.la libprotobuf.la libprotoc.la" || rm -f libprotobuf-lite.la libprotobuf.la libprotoc.la
+rm -f ./so_locations
+rm -rf .libs _libs
+rm -rf google/protobuf/.libs google/protobuf/_libs
+rm -rf google/protobuf/compiler/.libs google/protobuf/compiler/_libs
+rm -rf google/protobuf/compiler/cpp/.libs google/protobuf/compiler/cpp/_libs
+rm -rf google/protobuf/compiler/csharp/.libs google/protobuf/compiler/csharp/_libs
+rm -rf google/protobuf/compiler/java/.libs google/protobuf/compiler/java/_libs
+rm -rf google/protobuf/compiler/js/.libs google/protobuf/compiler/js/_libs
+rm -rf google/protobuf/compiler/objectivec/.libs google/protobuf/compiler/objectivec/_libs
+rm -rf google/protobuf/compiler/php/.libs google/protobuf/compiler/php/_libs
+rm -rf google/protobuf/compiler/python/.libs google/protobuf/compiler/python/_libs
+rm -rf google/protobuf/compiler/ruby/.libs google/protobuf/compiler/ruby/_libs
+rm -rf google/protobuf/io/.libs google/protobuf/io/_libs
+rm -rf google/protobuf/stubs/.libs google/protobuf/stubs/_libs
+rm -rf google/protobuf/util/.libs google/protobuf/util/_libs
+rm -rf google/protobuf/util/internal/.libs google/protobuf/util/internal/_libs
+rm -f *.loT
+rm -f *.o
+rm -f google/protobuf/*.o
+rm -f google/protobuf/*.lo
+rm -f google/protobuf/compiler/*.o
+rm -f google/protobuf/compiler/*.lo
+rm -f google/protobuf/compiler/cpp/*.o
+rm -f google/protobuf/compiler/cpp/*.lo
+rm -f google/protobuf/compiler/csharp/*.o
+rm -f google/protobuf/compiler/csharp/*.lo
+rm -f google/protobuf/compiler/java/*.o
+rm -f google/protobuf/compiler/java/*.lo
+rm -f google/protobuf/compiler/js/*.o
+rm -f google/protobuf/compiler/js/*.lo
+rm -f google/protobuf/compiler/objectivec/*.o
+rm -f google/protobuf/compiler/objectivec/*.lo
+rm -f google/protobuf/compiler/php/*.o
+rm -f google/protobuf/compiler/php/*.lo
+rm -f google/protobuf/compiler/python/*.o
+rm -f google/protobuf/compiler/python/*.lo
+rm -f google/protobuf/compiler/ruby/*.o
+rm -f google/protobuf/compiler/ruby/*.lo
+rm -f google/protobuf/io/*.o
+rm -f google/protobuf/io/*.lo
+rm -f google/protobuf/stubs/*.o
+rm -f google/protobuf/stubs/*.lo
+rm -f google/protobuf/testing/*.o
+rm -f google/protobuf/util/*.o
+rm -f google/protobuf/util/*.lo
+rm -f google/protobuf/util/internal/*.o
+rm -f google/protobuf/util/internal/*.lo
+rm -f google/protobuf/util/internal/testdata/*.o
+test -z "protobuf-test.log protobuf-lazy-descriptor-test.log protobuf-lite-test.log google/protobuf/compiler/zip_output_unittest.sh.log google/protobuf/io/gzip_stream_unittest.sh.log protobuf-lite-arena-test.log no-warning-test.log" || rm -f protobuf-test.log protobuf-lazy-descriptor-test.log protobuf-lite-test.log google/protobuf/compiler/zip_output_unittest.sh.log google/protobuf/io/gzip_stream_unittest.sh.log protobuf-lite-arena-test.log no-warning-test.log
+test -z "protobuf-test.trs protobuf-lazy-descriptor-test.trs protobuf-lite-test.trs google/protobuf/compiler/zip_output_unittest.sh.trs google/protobuf/io/gzip_stream_unittest.sh.trs protobuf-lite-arena-test.trs no-warning-test.trs" || rm -f protobuf-test.trs protobuf-lazy-descriptor-test.trs protobuf-lite-test.trs google/protobuf/compiler/zip_output_unittest.sh.trs google/protobuf/io/gzip_stream_unittest.sh.trs protobuf-lite-arena-test.trs no-warning-test.trs
+test -z "test-suite.log" || rm -f test-suite.log
+rm -f *.lo
+make[1]: Leaving directory '/home/bob/protobuf/src'
+[?2004h]0;root@ECE1524: /home/bob/protobufroot@ECE1524:/home/bob/protobuf# cd ..
+[?2004l[?2004h]0;root@ECE1524: /home/bobroot@ECE1524:/home/bob# clear
+[?2004l[H[2J[3J[?2004h]0;root@ECE1524: /home/bobroot@ECE1524:/home/bob# [7msudo apt-get --yes install cmake[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csudo apt-get --yes install cmake
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libflashrom1 libftdi1-2 python3-certifi python3-pymacaroons python3-requests python3-rfc3339
+  python3-tz
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  cmake-data dh-elpa-helper libjsoncpp25 librhash0
+Suggested packages:
+  cmake-doc ninja-build cmake-format
+The following NEW packages will be installed:
+  cmake cmake-data dh-elpa-helper libjsoncpp25 librhash0
+0 upgraded, 5 newly installed, 0 to remove and 0 not upgraded.
+Need to get 7,138 kB of archives.
+After this operation, 31.8 MB of additional disk space will be used.
+0% [Working]            Get:1 http://ca.archive.ubuntu.com/ubuntu jammy/main amd64 libjsoncpp25 amd64 1.9.5-3 [80.0 kB]
+0% [1 libjsoncpp25 2,638 B/80.0 kB 3%]                                      5% [Working]            Get:2 http://ca.archive.ubuntu.com/ubuntu jammy/main amd64 librhash0 amd64 1.4.2-1ubuntu1 [125 kB]
+5% [2 librhash0 8,477 B/125 kB 7%]                                  10% [Working]             Get:3 http://ca.archive.ubuntu.com/ubuntu jammy/main amd64 dh-elpa-helper all 2.0.9ubuntu1 [7,610 B]
+10% [3 dh-elpa-helper 1,863 B/7,610 B 24%]                                          Get:4 http://ca.archive.ubuntu.com/ubuntu jammy-updates/main amd64 cmake-data all 3.22.1-1ubuntu1.22.04.1 [1,913 kB]
+                                          15% [4 cmake-data 30.5 kB/1,913 kB 2%]33% [4 cmake-data 1,642 kB/1,913 kB 86%]                                        40% [Waiting for headers]                         Get:5 http://ca.archive.ubuntu.com/ubuntu jammy-updates/main amd64 cmake amd64 3.22.1-1ubuntu1.22.04.1 [5,013 kB]
+40% [5 cmake 18.2 kB/5,013 kB 0%]57% [5 cmake 1,551 kB/5,013 kB 31%]75% [5 cmake 3,146 kB/5,013 kB 63%]94% [5 cmake 4,854 kB/5,013 kB 97%]                                   100% [Working]              Fetched 7,138 kB in 2s (2,938 kB/s)
+Selecting previously unselected package libjsoncpp25:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 206127 files and directories currently installed.)
+Preparing to unpack .../libjsoncpp25_1.9.5-3_amd64.deb ...
+Unpacking libjsoncpp25:amd64 (1.9.5-3) ...
+Selecting previously unselected package librhash0:amd64.
+Preparing to unpack .../librhash0_1.4.2-1ubuntu1_amd64.deb ...
+Unpacking librhash0:amd64 (1.4.2-1ubuntu1) ...
+Selecting previously unselected package dh-elpa-helper.
+Preparing to unpack .../dh-elpa-helper_2.0.9ubuntu1_all.deb ...
+Unpacking dh-elpa-helper (2.0.9ubuntu1) ...
+Selecting previously unselected package cmake-data.
+Preparing to unpack .../cmake-data_3.22.1-1ubuntu1.22.04.1_all.deb ...
+Unpacking cmake-data (3.22.1-1ubuntu1.22.04.1) ...
+Selecting previously unselected package cmake.
+Preparing to unpack .../cmake_3.22.1-1ubuntu1.22.04.1_amd64.deb ...
+Unpacking cmake (3.22.1-1ubuntu1.22.04.1) ...
+Setting up dh-elpa-helper (2.0.9ubuntu1) ...
+Setting up libjsoncpp25:amd64 (1.9.5-3) ...
+Setting up librhash0:amd64 (1.4.2-1ubuntu1) ...
+Setting up cmake-data (3.22.1-1ubuntu1.22.04.1) ...
+Setting up cmake (3.22.1-1ubuntu1.22.04.1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.1) ...
+[?2004h]0;root@ECE1524: /home/bobroot@ECE1524:/home/bob# c[Kcmake -v
+[?2004l[0mCMake Error: Unknown argument -v[0m
+[0mCMake Error: Run 'cmake --help' for all supported options.[0m
+[?2004h]0;root@ECE1524: /home/bobroot@ECE1524:/home/bob# cmake -v[KV
+[?2004l[0mCMake Error: Unknown argument -V[0m
+[0mCMake Error: Run 'cmake --help' for all supported options.[0m
+[?2004h]0;root@ECE1524: /home/bobroot@ECE1524:/home/bob# cmake -V[K-version
+[?2004lcmake version 3.22.1
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+[?2004h]0;root@ECE1524: /home/bobroot@ECE1524:/home/bob# clear
+[?2004l[H[2J[3J[?2004h]0;root@ECE1524: /home/bobroot@ECE1524:/home/bob# [7msudo apt-get --yes install build-essential autoconf libtool pkg-config[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csudo apt-get --yes install build-essential autoconf libtool pkg-config
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+autoconf is already the newest version (2.71-2).
+build-essential is already the newest version (12.9ubuntu3).
+libtool is already the newest version (2.4.6-15build2).
+pkg-config is already the newest version (0.29.2-1ubuntu3).
+The following packages were automatically installed and are no longer required:
+  libflashrom1 libftdi1-2 python3-certifi python3-pymacaroons python3-requests python3-rfc3339
+  python3-tz
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+[?2004h]0;root@ECE1524: /home/bobroot@ECE1524:/home/bob# [7msudo apt-get --yes install libssl-dev[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csudo apt-get --yes install libssl-dev
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libflashrom1 libftdi1-2 python3-certifi python3-pymacaroons python3-requests python3-rfc3339
+  python3-tz
+Use 'sudo apt autoremove' to remove them.
+Suggested packages:
+  libssl-doc
+The following NEW packages will be installed:
+  libssl-dev
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 2,372 kB of archives.
+After this operation, 12.4 MB of additional disk space will be used.
+0% [Working]            Get:1 http://ca.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libssl-dev amd64 3.0.2-0ubuntu1.7 [2,372 kB]
+0% [1 libssl-dev 14.3 kB/2,372 kB 1%]                                     100% [Working]              Fetched 2,372 kB in 0s (8,609 kB/s)
+Selecting previously unselected package libssl-dev:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 209213 files and directories currently installed.)
+Preparing to unpack .../libssl-dev_3.0.2-0ubuntu1.7_amd64.deb ...
+Unpacking libssl-dev:amd64 (3.0.2-0ubuntu1.7) ...
+Setting up libssl-dev:amd64 (3.0.2-0ubuntu1.7) ...
+[?2004h]0;root@ECE1524: /home/bobroot@ECE1524:/home/bob# [?2004l
+exit
+
+Script done on 2022-12-24 19:28:32-05:00 [COMMAND_EXIT_CODE="0"]
